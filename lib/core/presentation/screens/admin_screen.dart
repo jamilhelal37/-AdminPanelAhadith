@@ -61,7 +61,7 @@ class _AdminScreenState extends ConsumerState<AdminScreen> {
       icon: Icons.dashboard_outlined,
     ),
     _AdminSection(
-      label: 'حكم الحديث',
+      label: 'أحكام الحديث',
       subtitle: 'إدارة أحكام الأحاديث ومراجعتها',
       icon: Icons.school_outlined,
     ),
@@ -750,85 +750,6 @@ class _AdminTopBar extends ConsumerWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class _NavItem extends StatelessWidget {

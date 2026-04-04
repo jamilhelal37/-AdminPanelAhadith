@@ -67,19 +67,8 @@ class AppRouteNames {
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
-  final refreshListenable = ValueNotifier<int>(0);
-  ref.onDispose(refreshListenable.dispose);
-
-  ref.listen<AsyncValue<AppUser?>>(authNotifierProvider, (_, _) {
-    refreshListenable.value++;
-  });
-  ref.listen<AuthSessionStatus>(authSessionStatusProvider, (_, _) {
-    refreshListenable.value++;
-  });
-
   if (kIsWeb) {
     return GoRouter(
-      refreshListenable: refreshListenable,
       initialLocation: '/admin',
       redirect: (_, state) {
         final status = ref.read(authSessionStatusProvider);
@@ -116,7 +105,6 @@ final routerProvider = Provider<GoRouter>((ref) {
   }
 
   return GoRouter(
-    refreshListenable: refreshListenable,
     initialLocation: '/splash',
     redirect: (_, state) {
       switch (ref.read(authSessionStatusProvider)) {

@@ -58,7 +58,7 @@ class AdminHomeScreen extends StatelessWidget {
       targetIndex: 14,
     ),
     _DashboardStat(
-      title: 'الأحاديث المكذوبة',
+      title: ' أحاديث منتشرة لا تصح',
       target: AdminCountTarget.fakeAhadith,
       icon: Icons.gpp_bad_outlined,
       targetIndex: 9,
