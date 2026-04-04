@@ -29,7 +29,7 @@ function parseFirebaseServiceAccount(): FirebaseServiceAccount {
   try {
     candidates.push(atob(raw.trim()));
   } catch (_) {
-    // Ignore non-base64 values.
+    
   }
 
   for (const candidate of candidates) {

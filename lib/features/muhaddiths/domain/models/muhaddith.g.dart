@@ -1,10 +1,12 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+
 
 part of 'muhaddith.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+
+
+
 
 _Muhaddith _$MuhaddithFromJson(Map<String, dynamic> json) => _Muhaddith(
   id: json['id'] as String?,

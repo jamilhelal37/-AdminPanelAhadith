@@ -11,7 +11,7 @@ import '../../../features/auth/presentation/providers/auth_notifier_provider.dar
 
 const double goldenDrawerWidth = 268;
 
-/// Golden App Drawer - القائمة الجانبية بالتصميم الذهبي
+
 class GoldenAppDrawer extends ConsumerWidget {
   const GoldenAppDrawer({super.key, this.userName, this.userImage});
 
@@ -360,7 +360,7 @@ class _DrawerFeatureIcon extends StatelessWidget {
   }
 }
 
-/// Golden App Bar - شريط التطبيق العلوي بالتصميم الذهبي
+
 class GoldenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GoldenAppBar({
     super.key,

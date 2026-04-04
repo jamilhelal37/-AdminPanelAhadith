@@ -1,10 +1,12 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+
 
 part of 'pro_upgrade_request.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+
+
+
 
 _ProUpgradeRequest _$ProUpgradeRequestFromJson(Map<String, dynamic> json) =>
     _ProUpgradeRequest(

@@ -116,7 +116,7 @@ class AdminQuestionScreen extends StatelessWidget {
                           askerNameById: askerNameById,
                           onDelete: (q) =>
                               _showDeleteConfirmationDialog(context, ref, q),
-                          // ? ????? ?????? ???
+                          
                           onEditAnswer: (q) {
                             showDialog(
                               context: context,

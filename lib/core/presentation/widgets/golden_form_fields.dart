@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-/// Golden Search Field - حقل بحث بالتصميم الذهبي مع Reactive Forms
+
 class GoldenSearchField extends StatelessWidget {
   final String formControlName;
   final String? hintText;
@@ -205,7 +205,7 @@ class GoldenSearchField extends StatelessWidget {
   }
 }
 
-/// Golden Text Field - حقل نص عادي بالتصميم الذهبي
+
 class GoldenTextField extends StatelessWidget {
   final String formControlName;
   final String? labelText;
@@ -271,7 +271,7 @@ class GoldenTextField extends StatelessWidget {
   }
 }
 
-/// Golden Dropdown Field - قائمة منسدلة بالتصميم الذهبي
+
 class GoldenDropdownField<T> extends StatelessWidget {
   final String formControlName;
   final String? labelText;
@@ -324,7 +324,7 @@ class GoldenMultiSelectItem<T> {
   const GoldenMultiSelectItem({required this.value, required this.label});
 }
 
-/// Golden Multi Select Dropdown - اختيار متعدد بالتصميم الذهبي
+
 class GoldenMultiSelectDropdown<T> extends StatelessWidget {
   final String formControlName;
   final String? labelText;

@@ -1,15 +1,3 @@
-﻿-- ========================================
--- Auto-generated unified SQL execution script
--- Order: tables (and indexes) -> functions -> storage -> triggers -> policies
--- Generated on: 2026-03-23 11:01:44
--- ========================================
-
--- ========================================
--- SECTION: tables
--- ========================================
-
--- FILE: tables\00_extensions_and_types.sql
-
 create extension if not exists "pgcrypto";
 create extension if not exists "pg_trgm";
 
@@ -49,7 +37,6 @@ exception
   when duplicate_object then null;
 end $$;
 
--- FILE: tables\01_app_user.sql
 
 create table if not exists public.app_user (
   id uuid primary key,
@@ -70,8 +57,6 @@ create table if not exists public.app_user (
     on update cascade
 );
 
-
--- FILE: tables\01_ruling.sql
 
 create table if not exists public.ruling (
   id uuid primary key default gen_random_uuid(),
@@ -94,8 +79,6 @@ create table if not exists public.ruling (
     on update cascade
 );
 
-
--- FILE: tables\02_muhaddiths.sql
 
 create table if not exists public.muhaddiths (
   id uuid primary key default gen_random_uuid(),
@@ -121,9 +104,6 @@ create table if not exists public.muhaddiths (
 );
 
 
-
--- FILE: tables\03_rawis.sql
-
 create table if not exists public.rawis (
   id uuid primary key default gen_random_uuid(),
   name text not null unique,
@@ -148,8 +128,6 @@ create table if not exists public.rawis (
 );
 
 
--- FILE: tables\04_explaining.sql
-
 create table if not exists public.explaining (
   id uuid primary key default gen_random_uuid(),
   text text not null,
@@ -171,8 +149,6 @@ create table if not exists public.explaining (
     on update cascade
 );
 
-
--- FILE: tables\05_books.sql
 
 create table if not exists public.books (
   id uuid primary key default gen_random_uuid(),
@@ -203,8 +179,6 @@ create table if not exists public.books (
 );
 
 
--- FILE: tables\06_topics.sql
-
 create table if not exists public.topics (
   id uuid primary key default gen_random_uuid(),
   name text not null unique,
@@ -227,8 +201,18 @@ create table if not exists public.topics (
 );
 
 
+create table if not exists public.user_fcm_tokens (
+  id uuid not null default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  fcm_token text not null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  last_seen timestamptz not null default now(),
 
--- FILE: tables\08_ahadith.sql
+  constraint user_fcm_tokens_pkey primary key (id),
+  constraint user_fcm_tokens_user_id_fcm_token_key unique (user_id, fcm_token)
+);
+
 
 create table if not exists public.ahadith (
   id uuid primary key default gen_random_uuid(),
@@ -299,9 +283,6 @@ create table if not exists public.ahadith (
 );
 
 
-
--- FILE: tables\09_fake_ahadith.sql
-
 create table if not exists public.fake_ahadith (
   id uuid primary key default gen_random_uuid(),
   sub_valid uuid null,
@@ -340,9 +321,6 @@ create table if not exists public.fake_ahadith (
 );
 
 
-
--- FILE: tables\10_comments.sql
-
 create table if not exists public.comments (
   id uuid primary key default gen_random_uuid(),
   hadith uuid not null,
@@ -364,8 +342,6 @@ create table if not exists public.comments (
     on update cascade
 );
 
-
--- FILE: tables\11_favorite.sql
 
 create table if not exists public.favorite (
   id uuid primary key default gen_random_uuid(),
@@ -389,7 +365,6 @@ create table if not exists public.favorite (
   constraint uq_favorite_user_hadith unique ("user", hadith)
 );
 
--- FILE: tables\12_questions.sql
 
 create table if not exists public.questions (
   id uuid primary key default gen_random_uuid(),
@@ -416,8 +391,6 @@ create table if not exists public.questions (
 );
 
 
--- FILE: tables\13_search_history.sql
-
 create table if not exists public.search_history (
   id uuid primary key default gen_random_uuid(),
   "user" uuid not null,
@@ -433,7 +406,6 @@ create table if not exists public.search_history (
     on update cascade
 );
 
--- FILE: tables\14_similar_ahadith.sql
 
 create table if not exists public.similar_ahadith (
   id uuid primary key default gen_random_uuid(),
@@ -471,7 +443,6 @@ create table if not exists public.similar_ahadith (
   constraint uq_similar_ahadith_main_sim unique (main_hadith, sim_hadith)
 );
 
--- FILE: tables\15_topic_class.sql
 
 create table if not exists public.topic_class (
   id uuid primary key default gen_random_uuid(),
@@ -510,8 +481,6 @@ create table if not exists public.topic_class (
 );
 
 
--- FILE: tables\16_admin_audit_log.sql
-
 create table if not exists public.admin_audit_log (
   id uuid primary key default gen_random_uuid(),
   table_name text not null,
@@ -522,8 +491,6 @@ create table if not exists public.admin_audit_log (
   new_data jsonb,
   created_at timestamptz not null default now()
 );
-
--- FILE: tables\17_pro_upgrade_requests.sql
 
 
 create table if not exists public.pro_upgrade_requests (
@@ -543,8 +510,6 @@ create unique index if not exists uq_pro_upgrade_requests_user_active
   on public.pro_upgrade_requests(user_id)
   where status <> 'reviewed';
 
--- FILE: tables\18_pro_upgrade_certificates.sql
-
 
 create table if not exists public.pro_upgrade_certificates (
   id uuid primary key default gen_random_uuid(),
@@ -557,8 +522,6 @@ create table if not exists public.pro_upgrade_certificates (
     references public.pro_upgrade_requests(id) on delete cascade
 
 );
-
--- FILE: tables\19_pro_upgrade_decisions.sql
 
 
 create table if not exists public.pro_upgrade_decisions (
@@ -580,57 +543,6 @@ create table if not exists public.pro_upgrade_decisions (
   constraint uq_pro_upgrade_decisions_req_user unique (request_id, user_id)
 );
 
--- FILE: tables\99_enable_realtime.sql
-
--- Enable Realtime for all public tables and storage.objects.
-do $$
-declare
-  v_table record;
-begin
-  if not exists (
-    select 1
-    from pg_publication
-    where pubname = 'supabase_realtime'
-  ) then
-    raise notice 'Publication supabase_realtime does not exist. Skipping realtime setup.';
-    return;
-  end if;
-
-  -- Add every public base table to supabase_realtime if not already added.
-  for v_table in
-    select t.table_name
-    from information_schema.tables t
-    where t.table_schema = 'public'
-      and t.table_type = 'BASE TABLE'
-  loop
-    if not exists (
-      select 1
-      from pg_publication_tables p
-      where p.pubname = 'supabase_realtime'
-        and p.schemaname = 'public'
-        and p.tablename = v_table.table_name
-    ) then
-      execute format(
-        'alter publication supabase_realtime add table public.%I',
-        v_table.table_name
-      );
-    end if;
-  end loop;
-
-  -- Add storage.objects (used for bucket file events) if not already added.
-  if not exists (
-    select 1
-    from pg_publication_tables p
-    where p.pubname = 'supabase_realtime'
-      and p.schemaname = 'storage'
-      and p.tablename = 'objects'
-  ) then
-    execute 'alter publication supabase_realtime add table storage.objects';
-  end if;
-end;
-$$;
-
--- FILE: indexes\01_all_indexes.sql
 
 create index if not exists idx_books_muhaddith on public.books(muhaddith);
 
@@ -692,7 +604,7 @@ create index if not exists idx_admin_audit_log_record_id on public.admin_audit_l
 create index if not exists idx_admin_audit_log_actor on public.admin_audit_log(actor_user_id);
 create index if not exists idx_admin_audit_log_created_at on public.admin_audit_log(created_at);
 
--- Pro Upgrade System Indexes
+
 create index if not exists idx_pro_upgrade_requests_user_id on public.pro_upgrade_requests(user_id);
 create index if not exists idx_pro_upgrade_requests_created_at on public.pro_upgrade_requests(created_at);
 create index if not exists idx_pro_upgrade_requests_status_created_at on public.pro_upgrade_requests(status, created_at desc);
@@ -705,11 +617,6 @@ create index if not exists idx_pro_upgrade_decisions_reviewed_by on public.pro_u
 create index if not exists idx_pro_upgrade_decisions_approved on public.pro_upgrade_decisions(approved);
 create index if not exists idx_pro_upgrade_decisions_created_at on public.pro_upgrade_decisions(created_at);
 
--- ========================================
--- SECTION: functions
--- ========================================
-
--- FILE: functions\01_set_updated_at.sql
 
 create or replace function public.set_updated_at()
 returns trigger
@@ -722,9 +629,6 @@ end;
 $$;
 
 
--- FILE: functions\02_update_updated_at_column.sql
-
-
 create or replace function public.update_updated_at_column()
 returns trigger
 language plpgsql
@@ -735,9 +639,7 @@ begin
 end;
 $$;
 
--- FILE: functions\03_handle_new_user.sql
 
--- Create a function to handle new user signup
 create or replace function public.handle_new_user()
 returns trigger
 language plpgsql
@@ -751,9 +653,7 @@ begin
 end;
 $$;
 
--- FILE: functions\04_is_admin.sql
 
--- Create a function to check if the user is an admin
 create or replace function public.is_admin()
 returns boolean
 language plpgsql
@@ -768,7 +668,6 @@ begin
 end;
 $$;
 
--- FILE: functions\05_set_row_user_stamps.sql
 
 create or replace function public.set_row_user_stamps()
 returns trigger
@@ -790,7 +689,6 @@ begin
 end;
 $$;
 
--- FILE: functions\06_log_admin_audit.sql
 
 create or replace function public.log_admin_audit()
 returns trigger
@@ -817,11 +715,6 @@ begin
 end;
 $$;
 
--- FILE: functions\07_arabic_text_normalization.sql
-
--- Arabic text normalization helpers
--- 1) normalize_arabic_diacritics: remove tashkeel only
--- 2) normalize_arabic_search_text: remove tashkeel, normalize hamza/alef, remove punctuation, collapse spaces
 
 create or replace function public.normalize_arabic_diacritics(p_text text)
 returns text
@@ -884,13 +777,7 @@ begin
 end;
 $$;
 
--- FILE: functions\08_create_pro_upgrade_request.sql
 
--- Create Pro Upgrade Request with ordered flow
--- 1. User creates request
--- 2. Uploads certificates
--- 3. Request moves to under_review
--- 4. Supervisor reviews request
 create or replace function public.create_pro_upgrade_request(
   p_user_id uuid
 )
@@ -934,11 +821,6 @@ exception when others then
 end;
 $$ language plpgsql security definer;
 
-
--- FILE: functions\09_search_ahadith.sql
-
--- Search function with word-by-word OR matching on normalized text.
--- Input query is normalized exactly like search_text.
 
 create or replace function public.search_ahadith_or_words(
   p_query text,
@@ -1005,10 +887,6 @@ begin
 end;
 $$;
 
--- FILE: functions\10_search_fake_ahadith.sql
-
--- Search function for fake_ahadith only (separate from ahadith).
--- Word-by-word OR matching on normalized search_text.
 
 create or replace function public.search_fake_ahadith_or_words(
   p_query text,
@@ -1072,7 +950,6 @@ begin
 end;
 $$;
 
--- FILE: functions\11_set_ahadith_text_variants.sql
 
 create or replace function public.set_ahadith_text_variants()
 returns trigger
@@ -1092,7 +969,6 @@ begin
 end;
 $$;
 
--- FILE: functions\12_set_fake_ahadith_text_variants.sql
 
 create or replace function public.set_fake_ahadith_text_variants()
 returns trigger
@@ -1112,7 +988,21 @@ begin
 end;
 $$;
 
--- FILE: functions\12b_notify_fake_ahadith_inserted.sql
+
+create or replace function public.is_scholar()
+returns boolean
+language plpgsql
+security definer set search_path = public
+as $$
+begin
+  return exists (
+    select 1
+    from public.app_user
+    where id = auth.uid() and type = 'scholar'
+  );
+end;
+$$;
+
 
 create or replace function public.notify_fake_ahadith_inserted()
 returns trigger
@@ -1163,26 +1053,7 @@ begin
 end;
 $$;
 
--- FILE: functions\13_is_scholar.sql
 
--- Create a function to check if the user is a scholar
-create or replace function public.is_scholar()
-returns boolean
-language plpgsql
-security definer set search_path = public
-as $$
-begin
-  return exists (
-    select 1
-    from public.app_user
-    where id = auth.uid() and type = 'scholar'
-  );
-end;
-$$;
-
--- FILE: functions\14_is_member.sql
-
--- Create a function to check if the user is a member
 create or replace function public.is_member()
 returns boolean
 language plpgsql
@@ -1197,9 +1068,7 @@ begin
 end;
 $$;
 
--- FILE: functions\15_owns_pro_upgrade_request.sql
 
--- Check whether the current user owns a pro upgrade request
 create or replace function public.owns_pro_upgrade_request(p_request_id uuid)
 returns boolean
 language plpgsql
@@ -1215,9 +1084,7 @@ begin
 end;
 $$;
 
--- FILE: functions\16_sync_pro_upgrade_certificate_from_storage.sql
 
--- Sync uploaded certificate files from Storage into pro_upgrade_certificates
 create or replace function public.sync_pro_upgrade_certificate_from_storage()
 returns trigger
 language plpgsql
@@ -1260,10 +1127,7 @@ begin
 end;
 $$;
 
--- FILE: functions\17_handle_pro_upgrade_sequence.sql
 
--- Pro-upgrade submit handler:
--- request -> upload one or more certificates -> submit request -> under_review
 create or replace function public.submit_pro_upgrade_request(
   p_request_id uuid
 )
@@ -1323,14 +1187,136 @@ exception when others then
 end;
 $$;
 
--- ========================================
--- SECTION: storage
--- ========================================
 
--- FILE: storage\scholar_certificates_bucket.sql
+create or replace function public.search_ahadith_and_words(
+  p_query text,
+  p_limit integer default 50,
+  p_offset integer default 0
+)
+returns table (
+  id uuid,
+  hadith_number integer,
+  text text,
+  normal_text text,
+  search_text text,
+  matched_terms integer
+)
+language plpgsql
+stable
+as $$
+declare
+  v_query text;
+  v_terms text[];
+begin
+  v_query := public.normalize_arabic_search_text(p_query);
 
--- Storage Configuration for Scholar Certificates
--- Create a private storage bucket for scholar certificate uploads
+  if v_query is null or v_query = '' then
+    return;
+  end if;
+
+  select array_agg(distinct t)
+  into v_terms
+  from unnest(regexp_split_to_array(v_query, '\s+')) as t
+  where char_length(t) > 0;
+
+  if v_terms is null or array_length(v_terms, 1) = 0 then
+    return;
+  end if;
+
+  return query
+  with scored as (
+    select
+      a.id,
+      a.hadith_number,
+      a.text,
+      a.normal_text,
+      a.search_text,
+      (
+        select count(*)::integer
+        from unnest(v_terms) as term
+        where a.search_text like '%' || term || '%'
+      ) as matched_terms
+    from public.ahadith a
+    where (
+      select bool_and(a.search_text like '%' || term || '%')
+      from unnest(v_terms) as term
+    )
+  )
+  select
+    s.id,
+    s.hadith_number,
+    s.text,
+    s.normal_text,
+    s.search_text,
+    s.matched_terms
+  from scored s
+  order by s.matched_terms desc, s.id asc
+  limit greatest(coalesce(p_limit, 50), 1)
+  offset greatest(coalesce(p_offset, 0), 0);
+end;
+$$;
+
+
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values (
+  'avatars',
+  'avatars',
+  true,
+  5242880,
+  array['image/jpeg', 'image/png', 'image/webp']
+)
+on conflict (id) do update
+set
+  name = excluded.name,
+  public = excluded.public,
+  file_size_limit = excluded.file_size_limit,
+  allowed_mime_types = excluded.allowed_mime_types;
+
+
+drop policy if exists "avatars-user-upload" on storage.objects;
+create policy "avatars-user-upload"
+  on storage.objects
+  for insert
+  to authenticated
+  with check (
+    bucket_id = 'avatars'
+  );
+
+
+drop policy if exists "avatars-user-update" on storage.objects;
+create policy "avatars-user-update"
+  on storage.objects
+  for update
+  to authenticated
+  using (
+    bucket_id = 'avatars'
+  )
+  with check (
+    bucket_id = 'avatars'
+  );
+
+
+drop policy if exists "avatars-user-delete" on storage.objects;
+create policy "avatars-user-delete"
+  on storage.objects
+  for delete
+  to authenticated
+  using (
+    bucket_id = 'avatars'
+  );
+
+
+
+drop policy if exists "avatars-admin-delete" on storage.objects;
+create policy "avatars-admin-delete"
+  on storage.objects
+  for delete
+  to authenticated
+  using (
+    bucket_id = 'avatars' and
+    public.is_admin()
+  );
+
 
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values (
@@ -1347,68 +1333,95 @@ set
   file_size_limit = excluded.file_size_limit,
   allowed_mime_types = excluded.allowed_mime_types;
 
--- Suggested path structure: {user_id}/{request_id}/{filename}
 
--- Related scripts:
--- - Policies: sql/storage/scholar_certificates_bucket_policies.sql
--- - Sync function: sql/functions/16_sync_pro_upgrade_certificate_from_storage.sql
--- - Sync trigger: sql/triggers/18_pro_upgrade_certificates_storage.sql
+drop policy if exists "scholars-user-upload" on storage.objects;
+create policy "scholars-user-upload"
+  on storage.objects
+  for insert
+  to authenticated
+  with check (
+    bucket_id = 'scholar-certificates' and
+    (storage.foldername(name))[1]::uuid = auth.uid() and
+    public.is_member()
+  );
 
 
--- ========================================
--- SECTION: triggers
--- ========================================
+drop policy if exists "scholars-user-view" on storage.objects;
+create policy "scholars-user-view"
+  on storage.objects
+  for select
+  to authenticated
+  using (
+    bucket_id = 'scholar-certificates' and
+    (
+      (storage.foldername(name))[1]::uuid = auth.uid() or
+      public.is_admin()
+    )
+  );
 
--- FILE: triggers\01_ruling.sql
+
+drop policy if exists "scholars-user-delete" on storage.objects;
+create policy "scholars-user-delete"
+  on storage.objects
+  for delete
+  to authenticated
+  using (
+    bucket_id = 'scholar-certificates' and
+    (storage.foldername(name))[1]::uuid = auth.uid()
+  );
+
+drop policy if exists "scholars-admin-delete" on storage.objects;
+create policy "scholars-admin-delete"
+  on storage.objects
+  for delete
+  to authenticated
+  using (
+    bucket_id = 'scholar-certificates' and
+    public.is_admin()
+  );
+
 
 drop trigger if exists trg_ruling_updated_at on public.ruling;
 create trigger trg_ruling_updated_at
 before update on public.ruling
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\02_muhaddiths.sql
 
 drop trigger if exists trg_muhaddiths_updated_at on public.muhaddiths;
 create trigger trg_muhaddiths_updated_at
 before update on public.muhaddiths
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\03_rawis.sql
 
 drop trigger if exists trg_rawis_updated_at on public.rawis;
 create trigger trg_rawis_updated_at
 before update on public.rawis
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\04_explaining.sql
 
 drop trigger if exists trg_explaining_updated_at on public.explaining;
 create trigger trg_explaining_updated_at
 before update on public.explaining
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\05_books.sql
 
 drop trigger if exists trg_books_updated_at on public.books;
 create trigger trg_books_updated_at
 before update on public.books
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\06_topics.sql
 
 drop trigger if exists trg_topics_updated_at on public.topics;
 create trigger trg_topics_updated_at
 before update on public.topics
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\07_app_user.sql
 
 drop trigger if exists trg_app_user_updated_at on public.app_user;
 create trigger trg_app_user_updated_at
 before update on public.app_user
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\08_ahadith.sql
 
 drop trigger if exists trg_ahadith_updated_at on public.ahadith;
 create trigger trg_ahadith_updated_at
@@ -1420,7 +1433,6 @@ create trigger trg_ahadith_text_variants
 before insert or update of text on public.ahadith
 for each row execute function public.set_ahadith_text_variants();
 
--- FILE: triggers\09_fake_ahadith.sql
 
 drop trigger if exists trg_fake_ahadith_updated_at on public.fake_ahadith;
 create trigger trg_fake_ahadith_updated_at
@@ -1437,57 +1449,48 @@ create trigger trg_fake_ahadith_notification
 after insert on public.fake_ahadith
 for each row execute function public.notify_fake_ahadith_inserted();
 
--- FILE: triggers\10_comments.sql
 
 drop trigger if exists trg_comments_updated_at on public.comments;
 create trigger trg_comments_updated_at
 before update on public.comments
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\11_favorite.sql
 
 drop trigger if exists trg_favorite_updated_at on public.favorite;
 create trigger trg_favorite_updated_at
 before update on public.favorite
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\12_questions.sql
 
 drop trigger if exists trg_questions_updated_at on public.questions;
 create trigger trg_questions_updated_at
 before update on public.questions
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\13_search_history.sql
 
 drop trigger if exists trg_search_history_updated_at on public.search_history;
 create trigger trg_search_history_updated_at
 before update on public.search_history
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\14_similar_ahadith.sql
 
 drop trigger if exists trg_similar_ahadith_updated_at on public.similar_ahadith;
 create trigger trg_similar_ahadith_updated_at
 before update on public.similar_ahadith
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\15_topic_class.sql
 
 drop trigger if exists trg_topic_class_updated_at on public.topic_class;
 create trigger trg_topic_class_updated_at
 before update on public.topic_class
 for each row execute function public.set_updated_at();
 
--- FILE: triggers\16_on_auth_user_created.sql
 
--- Create the trigger
 drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
 after insert on auth.users
 for each row execute function public.handle_new_user();
 
--- FILE: triggers\17_admin_audit.sql
 
 do $$
 declare
@@ -1515,7 +1518,6 @@ begin
   end loop;
 end $$;
 
--- FILE: triggers\18_pro_upgrade_certificates_storage.sql
 
 drop trigger if exists trg_sync_pro_upgrade_certificate_from_storage on storage.objects;
 create trigger trg_sync_pro_upgrade_certificate_from_storage
@@ -1523,11 +1525,9 @@ after insert on storage.objects
 for each row
 execute function public.sync_pro_upgrade_certificate_from_storage();
 
--- ========================================
--- SECTION: policies
--- ========================================
 
--- FILE: policies\01_ruling.sql
+drop trigger if exists trg_handle_pro_upgrade_certificate_insert on public.pro_upgrade_certificates;
+
 
 alter table public.ruling enable row level security;
 
@@ -1560,7 +1560,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\02_muhaddiths.sql
 
 alter table public.muhaddiths enable row level security;
 
@@ -1593,7 +1592,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\03_rawis.sql
 
 alter table public.rawis enable row level security;
 
@@ -1626,7 +1624,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\04_explaining.sql
 
 alter table public.explaining enable row level security;
 
@@ -1659,7 +1656,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\05_books.sql
 
 alter table public.books enable row level security;
 
@@ -1692,7 +1688,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\06_topics.sql
 
 alter table public.topics enable row level security;
 
@@ -1725,7 +1720,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\07_app_user.sql
 
 alter table public.app_user enable row level security;
 
@@ -1767,7 +1761,30 @@ using (public.is_admin())
 with check (public.is_admin());
 
 
--- FILE: policies\08_ahadith.sql
+alter table public.user_fcm_tokens enable row level security;
+
+drop policy if exists "Users can insert their own tokens" on public.user_fcm_tokens;
+create policy "Users can insert their own tokens"
+on public.user_fcm_tokens
+for insert
+to authenticated
+with check (auth.uid() = user_id);
+
+drop policy if exists "Users can update their own tokens" on public.user_fcm_tokens;
+create policy "Users can update their own tokens"
+on public.user_fcm_tokens
+for update
+to authenticated
+using (auth.uid() = user_id)
+with check (auth.uid() = user_id);
+
+drop policy if exists "Users can read their own tokens or admin can read all" on public.user_fcm_tokens;
+create policy "Users can read their own tokens or admin can read all"
+on public.user_fcm_tokens
+for select
+to authenticated
+using (auth.uid() = user_id or public.is_admin());
+
 
 alter table public.ahadith enable row level security;
 
@@ -1800,7 +1817,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\09_fake_ahadith.sql
 
 alter table public.fake_ahadith enable row level security;
 
@@ -1833,7 +1849,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\10_comments.sql
 
 alter table public.comments enable row level security;
 
@@ -1876,8 +1891,6 @@ to authenticated
 using (public.is_admin());
 
 
--- FILE: policies\11_favorite.sql
-
 alter table public.favorite enable row level security;
 
 drop policy if exists favorite_select_own on public.favorite;
@@ -1901,7 +1914,6 @@ for delete
 to authenticated
 using ("user" = auth.uid());
 
--- FILE: policies\12_questions.sql
 
 alter table public.questions enable row level security;
 
@@ -1949,7 +1961,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\13_search_history.sql
 
 alter table public.search_history enable row level security;
 
@@ -1982,7 +1993,6 @@ for delete
 to authenticated
 using ("user" = auth.uid());
 
--- FILE: policies\14_similar_ahadith.sql
 
 alter table public.similar_ahadith enable row level security;
 
@@ -2015,7 +2025,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\15_topic_class.sql
 
 alter table public.topic_class enable row level security;
 
@@ -2048,7 +2057,6 @@ for delete
 to authenticated
 using (public.is_admin());
 
--- FILE: policies\16_admin_audit_log.sql
 
 alter table public.admin_audit_log enable row level security;
 
@@ -2058,8 +2066,6 @@ on public.admin_audit_log
 for select
 to authenticated
 using (public.is_admin());
-
--- FILE: policies\17_pro_upgrade_requests.sql
 
 
 alter table public.pro_upgrade_requests enable row level security;
@@ -2100,7 +2106,6 @@ create policy pro_upgrade_requests_delete_admin
   to authenticated
   using (public.is_admin());
 
--- FILE: policies\18_pro_upgrade_certificates.sql
 
 alter table public.pro_upgrade_certificates enable row level security;
 
@@ -2137,7 +2142,6 @@ create policy pro_upgrade_certificates_delete_admin
   to authenticated
   using (public.is_admin());
 
--- FILE: policies\20_pro_upgrade_decisions.sql
 
 alter table public.pro_upgrade_decisions enable row level security;
 
@@ -2173,54 +2177,3 @@ create policy pro_upgrade_decisions_delete_admin
   for delete
   to authenticated
   using (public.is_admin());
-
--- FILE: storage\scholar_certificates_bucket_policies.sql
-
--- RLS Policies for scholar-certificates bucket on storage.objects
-
--- Users can upload to their own folder
--- Path format: {user_id}/{request_id}/{filename}
-drop policy if exists "scholars-user-upload" on storage.objects;
-create policy "scholars-user-upload"
-  on storage.objects
-  for insert
-  with check (
-    bucket_id = 'scholar-certificates' and
-    (storage.foldername(name))[1]::uuid = auth.uid() and
-    public.is_member()
-  );
-
--- Users can view their own files (admins included)
-drop policy if exists "scholars-user-view" on storage.objects;
-create policy "scholars-user-view"
-  on storage.objects
-  for select
-  using (
-    bucket_id = 'scholar-certificates' and
-    (
-      (storage.foldername(name))[1]::uuid = auth.uid() or
-      public.is_admin()
-    )
-  );
-
--- Users can delete their own files
-drop policy if exists "scholars-user-delete" on storage.objects;
-create policy "scholars-user-delete"
-  on storage.objects
-  for delete
-  using (
-    bucket_id = 'scholar-certificates' and
-    (storage.foldername(name))[1]::uuid = auth.uid()
-  );
-
-drop policy if exists "scholars-admin-view" on storage.objects;
--- Admins can delete any files
-drop policy if exists "scholars-admin-delete" on storage.objects;
-create policy "scholars-admin-delete"
-  on storage.objects
-  for delete
-  using (
-    bucket_id = 'scholar-certificates' and
-    public.is_admin()
-  );
-

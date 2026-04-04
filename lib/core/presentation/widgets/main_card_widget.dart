@@ -18,7 +18,7 @@ class MainCardWidget extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       color: Theme.of(context).colorScheme.primary,
       child: InkWell(
-        // splashFactory: NoSplash.splashFactory,
+        
         splashFactory: InkRipple.splashFactory,
         splashColor: Theme.of(context).colorScheme.secondaryFixedDim,
         borderRadius: BorderRadius.circular(16),

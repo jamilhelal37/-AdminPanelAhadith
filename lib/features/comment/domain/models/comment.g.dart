@@ -1,10 +1,12 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+
 
 part of 'comment.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+
+
+
 
 _Comment _$CommentFromJson(Map<String, dynamic> json) => _Comment(
   id: json['id'] as String?,

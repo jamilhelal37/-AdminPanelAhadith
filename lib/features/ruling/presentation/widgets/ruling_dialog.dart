@@ -56,43 +56,43 @@ class _RulingDialogState extends ConsumerState<RulingDialog> {
                   ValidationMessage.required: (_) => 'الاسم مطلوب',
                 },
               ),
-              // ReactiveDropdownField<District>(
-              //   formControlName: "district",
-              //   items: District.values
-              //       .map(
-              //         (e) => DropdownMenuItem(
-              //           value: e,
-              //           child: Text(
-              //             (e.name[0].toUpperCase() + e.name.substring(1)),
-              //           ),
-              //         ),
-              //       )
-              //       .toList(),
-              //   decoration: InputDecoration(
-              //     labelText: 'المنطقة',
-              //     errorStyle: TextStyle(color: colorScheme.error),
-              //   ),
-              //   validationMessages: {
-              //     ValidationMessage.required: (_) =>
-              //         'المنطقة مطلوب',
-              //   },
-              // ),
-              //       ReactiveTextField(
-              //         formControlName: "description",
-              //         decoration: InputDecoration(
-              //           labelText: 'الوصف',
-              //           errorStyle: TextStyle(color: colorScheme.error),
-              //         ),
-              //         maxLines: 3,
-              //         validationMessages: {
-              //           ValidationMessage.required: (_) =>
-              //               'الوصف مطلوب',
-              //         },
-              //       ),
-              //       ReactiveSwitchListTile(
-              //         title: Text('منشور'),
-              //         formControlName: "isPublished",
-              //       ),
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
             ],
           ),
         ),
@@ -119,13 +119,13 @@ class _RulingDialogState extends ConsumerState<RulingDialog> {
                         try {
                           var ruling = Ruling(
                             name: (formGroup.value["name"] ?? "") as String,
-                            // district:
-                            //     (formGroup.value["district"] ?? District.aleppo)
-                            //         as District,
-                            // description:
-                            //     (formGroup.value["description"] ?? "") as String,
-                            // isPublished:
-                            //     (formGroup.value["isPublished"] ?? false) as bool,
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             createdAt: '',
                             updatedAt: '',
                           );

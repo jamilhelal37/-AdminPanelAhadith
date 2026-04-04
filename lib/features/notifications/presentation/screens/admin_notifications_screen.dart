@@ -389,70 +389,70 @@ class _AdminNotificationsScreenState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /*
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: isWide ? 18 : 14,
-                vertical: isWide ? 16 : 14,
-              ),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    Color.alphaBlend(
-                      cs.primary.withValues(alpha: 0.05),
-                      cs.surface,
-                    ),
-                    cs.surfaceContainerLowest,
-                  ],
-                ),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: cs.outlineVariant.withValues(alpha: 0.22),
-                ),
-              ),
-              child: isWide
-                  ? Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'إرسال إشعار فوري',
-                                style: textTheme.headlineSmall?.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: cs.onSurface,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 14),
-                        _AudienceModeChip(isToAllUsers: _isToAllUsers),
-                      ],
-                    )
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'إرسال إشعار فوري',
-                          style: textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: cs.onSurface,
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: _AudienceModeChip(isToAllUsers: _isToAllUsers),
-                        ),
-                      ],
-                    ),
-            ),
-            const SizedBox(height: 16),
-            */
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             AdminNotificationAudienceToggle(
               isToAllUsers: _isToAllUsers,
               onChanged: _handleAudienceChanged,
@@ -544,38 +544,38 @@ class _AdminNotificationsScreenState
   }
 }
 
-/*
-class _AudienceModeChip extends StatelessWidget {
-  const _AudienceModeChip({required this.isToAllUsers});
 
-  final bool isToAllUsers;
 
-  @override
-  Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: cs.primary.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: cs.primary.withValues(alpha: 0.14)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.notifications_active, color: cs.primary, size: 18),
-          const SizedBox(width: 8),
-          Text(
-            isToAllUsers ? 'إرسال جماعي' : 'إرسال مخصص',
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-              color: cs.primary,
-              fontWeight: FontWeight.w800,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

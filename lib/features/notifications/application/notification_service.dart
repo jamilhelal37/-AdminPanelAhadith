@@ -30,7 +30,7 @@ class PushNotificationService {
     FirebaseMessaging? messaging,
     SupabaseClient? supabase,
     required HadithOfDayNotificationService localNotifications,
-  }) : _messaging = messaging ?? FirebaseMessaging.instance,
+  }) : _messagingOverride = messaging,
        _supabase = supabase ?? Supabase.instance.client,
        _localNotifications = localNotifications;
 
@@ -39,7 +39,7 @@ class PushNotificationService {
   static const String _channelName = 'إشعارات التطبيق';
   static const String _channelDescription = 'الإشعارات الفورية العامة والخاصة';
 
-  final FirebaseMessaging _messaging;
+  final FirebaseMessaging? _messagingOverride;
   final SupabaseClient _supabase;
   final HadithOfDayNotificationService _localNotifications;
 
@@ -54,6 +54,9 @@ class PushNotificationService {
   bool _initialized = false;
 
   Stream<String> get payloadStream => _payloadStream.stream;
+
+  FirebaseMessaging get _messaging =>
+      _messagingOverride ?? FirebaseMessaging.instance;
 
   String? consumeLaunchPayload() {
     final payload = _launchPayload;

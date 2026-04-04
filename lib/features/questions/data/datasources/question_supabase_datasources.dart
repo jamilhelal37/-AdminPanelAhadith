@@ -167,7 +167,7 @@ class QuestionSupabaseDatasource implements QuestionRepository {
     try {
       final json = question.toJson();
 
-      // لا نرسل القيم التي تولدها قاعدة البيانات.
+      
       json.remove('id');
       json.remove('created_at');
       json.remove('updated_at');
@@ -193,7 +193,7 @@ class QuestionSupabaseDatasource implements QuestionRepository {
       }
 
       final json = question.toJson();
-      // لا نعدّل وقت الإنشاء.
+      
       json.remove('created_at');
 
       final res = await _client

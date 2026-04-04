@@ -1,28 +1,30 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// coverage:ignore-file
-// ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: type=lint, type=warning
+
+
+
+
+
 
 part of 'search_history.dart';
 
-// **************************************************************************
-// FreezedGenerator
-// **************************************************************************
 
-// dart format off
+
+
+
+
 T _$identity<T>(T value) => value;
 
-/// @nodoc
+
 mixin _$SearchHistory {
 
  String? get id;@JsonKey(name: 'user') String? get userId;@JsonKey(name: 'search_text') String get searchText;@JsonKey(name: 'ishadith') bool get isHadith;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt;
-/// Create a copy of SearchHistory
-/// with the given fields replaced by the non-null parameter values.
+
+
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $SearchHistoryCopyWith<SearchHistory> get copyWith => _$SearchHistoryCopyWithImpl<SearchHistory>(this as SearchHistory, _$identity);
 
-  /// Serializes this SearchHistory to a JSON map.
+  
   Map<String, dynamic> toJson();
 
 
@@ -43,7 +45,7 @@ String toString() {
 
 }
 
-/// @nodoc
+
 abstract mixin class $SearchHistoryCopyWith<$Res>  {
   factory $SearchHistoryCopyWith(SearchHistory value, $Res Function(SearchHistory) _then) = _$SearchHistoryCopyWithImpl;
 @useResult
@@ -55,7 +57,7 @@ $Res call({
 
 
 }
-/// @nodoc
+
 class _$SearchHistoryCopyWithImpl<$Res>
     implements $SearchHistoryCopyWith<$Res> {
   _$SearchHistoryCopyWithImpl(this._self, this._then);
@@ -63,16 +65,16 @@ class _$SearchHistoryCopyWithImpl<$Res>
   final SearchHistory _self;
   final $Res Function(SearchHistory) _then;
 
-/// Create a copy of SearchHistory
-/// with the given fields replaced by the non-null parameter values.
+
+
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? userId = freezed,Object? searchText = null,Object? isHadith = null,Object? createdAt = null,Object? updatedAt = null,}) {
   return _then(_self.copyWith(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,userId: freezed == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as String?,searchText: null == searchText ? _self.searchText : searchText // ignore: cast_nullable_to_non_nullable
-as String,isHadith: null == isHadith ? _self.isHadith : isHadith // ignore: cast_nullable_to_non_nullable
-as bool,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id 
+as String?,userId: freezed == userId ? _self.userId : userId 
+as String?,searchText: null == searchText ? _self.searchText : searchText 
+as String,isHadith: null == isHadith ? _self.isHadith : isHadith 
+as bool,createdAt: null == createdAt ? _self.createdAt : createdAt 
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt 
 as String,
   ));
 }
@@ -80,19 +82,19 @@ as String,
 }
 
 
-/// Adds pattern-matching-related methods to [SearchHistory].
+
 extension SearchHistoryPatterns on SearchHistory {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SearchHistory value)?  $default,{required TResult orElse(),}){
 final _that = this;
@@ -103,18 +105,18 @@ return $default(_that);case _:
 
 }
 }
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SearchHistory value)  $default,){
 final _that = this;
@@ -125,17 +127,17 @@ return $default(_that);case _:
 
 }
 }
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SearchHistory value)?  $default,){
 final _that = this;
@@ -146,17 +148,17 @@ return $default(_that);case _:
 
 }
 }
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id, @JsonKey(name: 'user')  String? userId, @JsonKey(name: 'search_text')  String searchText, @JsonKey(name: 'ishadith')  bool isHadith, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
@@ -166,18 +168,18 @@ return $default(_that.id,_that.userId,_that.searchText,_that.isHadith,_that.crea
 
 }
 }
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id, @JsonKey(name: 'user')  String? userId, @JsonKey(name: 'search_text')  String searchText, @JsonKey(name: 'ishadith')  bool isHadith, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)  $default,) {final _that = this;
 switch (_that) {
@@ -187,17 +189,17 @@ return $default(_that.id,_that.userId,_that.searchText,_that.isHadith,_that.crea
 
 }
 }
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id, @JsonKey(name: 'user')  String? userId, @JsonKey(name: 'search_text')  String searchText, @JsonKey(name: 'ishadith')  bool isHadith, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)?  $default,) {final _that = this;
 switch (_that) {
@@ -210,7 +212,7 @@ return $default(_that.id,_that.userId,_that.searchText,_that.isHadith,_that.crea
 
 }
 
-/// @nodoc
+
 @JsonSerializable()
 
 class _SearchHistory implements SearchHistory {
@@ -224,8 +226,8 @@ class _SearchHistory implements SearchHistory {
 @override@JsonKey(name: 'created_at') final  String createdAt;
 @override@JsonKey(name: 'updated_at') final  String updatedAt;
 
-/// Create a copy of SearchHistory
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 _$SearchHistoryCopyWith<_SearchHistory> get copyWith => __$SearchHistoryCopyWithImpl<_SearchHistory>(this, _$identity);
@@ -252,7 +254,7 @@ String toString() {
 
 }
 
-/// @nodoc
+
 abstract mixin class _$SearchHistoryCopyWith<$Res> implements $SearchHistoryCopyWith<$Res> {
   factory _$SearchHistoryCopyWith(_SearchHistory value, $Res Function(_SearchHistory) _then) = __$SearchHistoryCopyWithImpl;
 @override @useResult
@@ -264,7 +266,7 @@ $Res call({
 
 
 }
-/// @nodoc
+
 class __$SearchHistoryCopyWithImpl<$Res>
     implements _$SearchHistoryCopyWith<$Res> {
   __$SearchHistoryCopyWithImpl(this._self, this._then);
@@ -272,16 +274,16 @@ class __$SearchHistoryCopyWithImpl<$Res>
   final _SearchHistory _self;
   final $Res Function(_SearchHistory) _then;
 
-/// Create a copy of SearchHistory
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? userId = freezed,Object? searchText = null,Object? isHadith = null,Object? createdAt = null,Object? updatedAt = null,}) {
   return _then(_SearchHistory(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,userId: freezed == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as String?,searchText: null == searchText ? _self.searchText : searchText // ignore: cast_nullable_to_non_nullable
-as String,isHadith: null == isHadith ? _self.isHadith : isHadith // ignore: cast_nullable_to_non_nullable
-as bool,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id 
+as String?,userId: freezed == userId ? _self.userId : userId 
+as String?,searchText: null == searchText ? _self.searchText : searchText 
+as String,isHadith: null == isHadith ? _self.isHadith : isHadith 
+as bool,createdAt: null == createdAt ? _self.createdAt : createdAt 
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt 
 as String,
   ));
 }
@@ -289,4 +291,4 @@ as String,
 
 }
 
-// dart format on
+

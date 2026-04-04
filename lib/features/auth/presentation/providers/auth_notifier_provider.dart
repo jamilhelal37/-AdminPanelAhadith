@@ -152,7 +152,6 @@ class AuthNotifier extends AsyncNotifier<AppUser?> {
   Future<void> _signOutSilently() async {
     try {
       await ref.read(authRepositoryProvider).signOut();
-      // ignore: empty_catches
     } catch (_) {}
   }
 
@@ -281,7 +280,6 @@ class AuthNotifier extends AsyncNotifier<AppUser?> {
         state = AsyncValue.data(reloaded);
       }
 
-      // Show post-signup avatar screen
       ref.read(showPostSignupAvatarProvider.notifier).state = true;
       onSuccess();
     } catch (e) {
@@ -297,9 +295,12 @@ class AuthNotifier extends AsyncNotifier<AppUser?> {
   }) async {
     try {
       final repo = ref.read(authRepositoryProvider);
-      await repo.signInWithEmail(email, password);
+      final authUser = await repo.signInWithEmail(email, password);
 
-      final user = await repo.getAppUser();
+      final user = await repo.getAppUser(
+        authUser: authUser,
+        verifySession: false,
+      );
       final denialMessage = _accessDeniedMessage(user);
       if (denialMessage != null) {
         await _signOutSilently();
@@ -318,11 +319,12 @@ class AuthNotifier extends AsyncNotifier<AppUser?> {
 
   Future<void> logout() async {
     try {
-      var repo = ref.read(authRepositoryProvider);
+      final repo = ref.read(authRepositoryProvider);
       await repo.signOut();
       state = const AsyncValue.data(null);
-      // ignore: empty_catches
-    } catch (e) {}
+    } catch (e) {
+      debugPrint('Logout failed: $e');
+    }
   }
 
   Future<void> googleAuth() async {
@@ -330,7 +332,7 @@ class AuthNotifier extends AsyncNotifier<AppUser?> {
       final repo = ref.read(authRepositoryProvider);
       await repo.googleAuth();
 
-      final user = await repo.getAppUser();
+      final user = await repo.getAppUser(verifySession: false);
       final denialMessage = _accessDeniedMessage(user);
       if (denialMessage != null) {
         await _signOutSilently();

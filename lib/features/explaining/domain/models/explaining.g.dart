@@ -1,10 +1,12 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+
 
 part of 'explaining.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+
+
+
 
 _Explaining _$ExplainingFromJson(Map<String, dynamic> json) => _Explaining(
   id: json['id'] as String?,

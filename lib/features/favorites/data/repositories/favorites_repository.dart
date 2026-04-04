@@ -76,7 +76,7 @@ class FavoritesSupabaseRepository implements FavoritesRepository {
       return true;
     }
 
-    // Postgrest errors can be transient when connection drops.
+    
     if (error is PostgrestException) {
       return true;
     }
@@ -150,7 +150,7 @@ class FavoritesSupabaseRepository implements FavoritesRepository {
   void _scheduleSync(String userId, FavoriteSyncOperation operation) {
     unawaited(
       _syncSingleOperation(userId, operation).catchError((_) {
-        // Background sync failures are persisted in pending operations.
+        
       }),
     );
   }

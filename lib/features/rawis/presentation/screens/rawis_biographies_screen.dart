@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 import '../providers/admin_rawi_future_provider.dart';
 
-/// Rawis biographies screen
+
 class RawisBiographiesScreen extends ConsumerWidget {
   const RawisBiographiesScreen({super.key});
 

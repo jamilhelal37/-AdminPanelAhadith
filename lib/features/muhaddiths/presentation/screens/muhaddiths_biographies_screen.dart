@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 import '../providers/muhaddith_future_provider.dart';
 
-/// Muhaddith biographies screen
+
 class MuhaddithsBiographiesScreen extends ConsumerWidget {
   const MuhaddithsBiographiesScreen({super.key});
 

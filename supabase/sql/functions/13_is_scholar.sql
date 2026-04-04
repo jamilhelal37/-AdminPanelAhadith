@@ -1,4 +1,4 @@
--- Create a function to check if the user is a scholar
+
 create or replace function public.is_scholar()
 returns boolean
 language plpgsql

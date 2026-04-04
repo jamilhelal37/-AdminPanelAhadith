@@ -1,8 +1,8 @@
--- Create Pro Upgrade Request with ordered flow
--- 1. User creates request
--- 2. Uploads certificates
--- 3. Request moves to under_review
--- 4. Supervisor reviews request
+
+
+
+
+
 create or replace function public.create_pro_upgrade_request(
   p_user_id uuid
 )

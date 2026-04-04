@@ -89,7 +89,7 @@ class _BookDialogState extends ConsumerState<BookDialog> {
 
                   final ctrl = form.control('muhaddithId');
 
-                  // set default (أول id غير null) إذا ما في قيمة حالياً
+                  
                   if (ctrl.value == null ||
                       (ctrl.value is String &&
                           (ctrl.value as String).isEmpty)) {
@@ -104,7 +104,7 @@ class _BookDialogState extends ConsumerState<BookDialog> {
                     items: available
                         .map(
                           (m) => DropdownMenuItem<String>(
-                            value: m.id!, // ✅ non-null
+                            value: m.id!, 
                             child: Text(m.name),
                           ),
                         )
@@ -124,7 +124,7 @@ class _BookDialogState extends ConsumerState<BookDialog> {
         ),
         actions: [
           TextButton(
-            onPressed: () => context.pop(), // ✅ بدل context.pop()
+            onPressed: () => context.pop(), 
             child: Text('إلغاء'),
           ),
           ReactiveFormConsumer(
@@ -176,7 +176,7 @@ class _BookDialogState extends ConsumerState<BookDialog> {
                           debugPrint('تم حفظ الكتاب');
 
                           if (!mounted) return;
-                          context.pop(); // ✅ اغلاق الديالوج مؤكّد
+                          context.pop(); 
                         } catch (e, st) {
                           debugPrint('خطأ في حفظ الكتاب: $e');
                           debugPrint('$st');

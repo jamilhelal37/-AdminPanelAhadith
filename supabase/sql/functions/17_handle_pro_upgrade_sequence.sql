@@ -1,5 +1,5 @@
--- Pro-upgrade submit handler:
--- request -> upload one or more certificates -> submit request -> under_review
+
+
 
 create or replace function public.submit_pro_upgrade_request(
   p_request_id uuid

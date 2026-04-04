@@ -1,10 +1,12 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+
 
 part of 'hadith.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+
+
+
 
 _Hadith _$HadithFromJson(Map<String, dynamic> json) => _Hadith(
   id: json['id'] as String?,

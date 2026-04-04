@@ -361,7 +361,7 @@ class HadithSupabaseDatasource implements HadithRepository {
     return _client.from(_table).count(CountOption.exact);
   }
 
-  // ✅ علاقات صحيحة باستخدام أسماء الـ FK constraints عندك
+  
   static const String _selectWithRelations = '''
 id,
 sub_valid,

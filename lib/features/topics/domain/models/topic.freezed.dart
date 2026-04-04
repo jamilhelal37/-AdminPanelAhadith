@@ -1,28 +1,30 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// coverage:ignore-file
-// ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: type=lint, type=warning
+
+
+
+
+
 
 part of 'topic.dart';
 
-// **************************************************************************
-// FreezedGenerator
-// **************************************************************************
 
-// dart format off
+
+
+
+
 T _$identity<T>(T value) => value;
 
-/// @nodoc
+
 mixin _$Topic {
 
  String? get id; String get name;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt;
-/// Create a copy of Topic
-/// with the given fields replaced by the non-null parameter values.
+
+
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $TopicCopyWith<Topic> get copyWith => _$TopicCopyWithImpl<Topic>(this as Topic, _$identity);
 
-  /// Serializes this Topic to a JSON map.
+  
   Map<String, dynamic> toJson();
 
 
@@ -43,7 +45,7 @@ String toString() {
 
 }
 
-/// @nodoc
+
 abstract mixin class $TopicCopyWith<$Res>  {
   factory $TopicCopyWith(Topic value, $Res Function(Topic) _then) = _$TopicCopyWithImpl;
 @useResult
@@ -55,7 +57,7 @@ $Res call({
 
 
 }
-/// @nodoc
+
 class _$TopicCopyWithImpl<$Res>
     implements $TopicCopyWith<$Res> {
   _$TopicCopyWithImpl(this._self, this._then);
@@ -63,14 +65,14 @@ class _$TopicCopyWithImpl<$Res>
   final Topic _self;
   final $Res Function(Topic) _then;
 
-/// Create a copy of Topic
-/// with the given fields replaced by the non-null parameter values.
+
+
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = null,Object? createdAt = null,Object? updatedAt = null,}) {
   return _then(_self.copyWith(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id 
+as String?,name: null == name ? _self.name : name 
+as String,createdAt: null == createdAt ? _self.createdAt : createdAt 
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt 
 as String,
   ));
 }
@@ -78,19 +80,19 @@ as String,
 }
 
 
-/// Adds pattern-matching-related methods to [Topic].
+
 extension TopicPatterns on Topic {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Topic value)?  $default,{required TResult orElse(),}){
 final _that = this;
@@ -101,18 +103,18 @@ return $default(_that);case _:
 
 }
 }
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Topic value)  $default,){
 final _that = this;
@@ -123,17 +125,17 @@ return $default(_that);case _:
 
 }
 }
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Topic value)?  $default,){
 final _that = this;
@@ -144,17 +146,17 @@ return $default(_that);case _:
 
 }
 }
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
@@ -164,18 +166,18 @@ return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt);case _:
 
 }
 }
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)  $default,) {final _that = this;
 switch (_that) {
@@ -185,17 +187,17 @@ return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt);case _:
 
 }
 }
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  String name, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)?  $default,) {final _that = this;
 switch (_that) {
@@ -208,7 +210,7 @@ return $default(_that.id,_that.name,_that.createdAt,_that.updatedAt);case _:
 
 }
 
-/// @nodoc
+
 @JsonSerializable()
 
 class _Topic implements Topic {
@@ -220,8 +222,8 @@ class _Topic implements Topic {
 @override@JsonKey(name: 'created_at') final  String createdAt;
 @override@JsonKey(name: 'updated_at') final  String updatedAt;
 
-/// Create a copy of Topic
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 _$TopicCopyWith<_Topic> get copyWith => __$TopicCopyWithImpl<_Topic>(this, _$identity);
@@ -248,7 +250,7 @@ String toString() {
 
 }
 
-/// @nodoc
+
 abstract mixin class _$TopicCopyWith<$Res> implements $TopicCopyWith<$Res> {
   factory _$TopicCopyWith(_Topic value, $Res Function(_Topic) _then) = __$TopicCopyWithImpl;
 @override @useResult
@@ -260,7 +262,7 @@ $Res call({
 
 
 }
-/// @nodoc
+
 class __$TopicCopyWithImpl<$Res>
     implements _$TopicCopyWith<$Res> {
   __$TopicCopyWithImpl(this._self, this._then);
@@ -268,14 +270,14 @@ class __$TopicCopyWithImpl<$Res>
   final _Topic _self;
   final $Res Function(_Topic) _then;
 
-/// Create a copy of Topic
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = null,Object? createdAt = null,Object? updatedAt = null,}) {
   return _then(_Topic(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id 
+as String?,name: null == name ? _self.name : name 
+as String,createdAt: null == createdAt ? _self.createdAt : createdAt 
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt 
 as String,
   ));
 }
@@ -283,4 +285,4 @@ as String,
 
 }
 
-// dart format on
+

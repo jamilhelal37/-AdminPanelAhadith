@@ -19,7 +19,7 @@ import '../data/home_feature_catalog.dart';
 import '../models/home_feature_item.dart';
 import '../providers/home_shell_navigation_provider.dart';
 
-/// User Home Screen - الشاشة الرئيسية للمستخدم بالتصميم الذهبي
+
 class UserHomeScreen extends ConsumerStatefulWidget {
   const UserHomeScreen({super.key});
 

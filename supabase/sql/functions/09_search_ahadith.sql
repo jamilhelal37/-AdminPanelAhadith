@@ -1,5 +1,5 @@
--- Search function with word-by-word OR matching on normalized text.
--- Input query is normalized exactly like search_text.
+
+
 
 create or replace function public.search_ahadith_or_words(
   p_query text,

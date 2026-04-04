@@ -1,4 +1,4 @@
-// ignore_for_file: invalid_annotation_target
+
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -68,20 +68,20 @@ abstract class Hadith with _$Hadith {
   const factory Hadith({
     String? id,
 
-    // FK -> ahadith.id (الحديث الصحيح)
+    
     @JsonKey(name: 'sub_valid') String? subValid,
 
-    // نص الحديث الصحيح (قادمة من استعلام منفصل)
+    
     @JsonKey(includeToJson: false) String? subValidText,
 
-    // FK -> explaining.id (أو explainings حسب جدولك)
+    
     @JsonKey(name: 'explaining') String? explainingId,
 
-    // نص الشرح (قادمة من join)
+    
     @JsonKey(name: 'explaining_rel', fromJson: _relText, includeToJson: false)
     String? explainingText,
 
-    // قراءة/حفظ نوع الحديث بالعربي من قاعدة البيانات
+    
     @JsonKey(fromJson: _hadithTypeFromJson, toJson: _hadithTypeToJson)
     required HadithType type,
 
@@ -92,10 +92,10 @@ abstract class Hadith with _$Hadith {
 
     @JsonKey(name: 'hadith_number') required int hadithNumber,
 
-    // FK -> ruling.id (حكم المحدث)
+    
     @JsonKey(name: 'muhaddith_ruling') String? muhaddithRulingId,
 
-    // اسم حكم المحدث
+    
     @JsonKey(
       name: 'muhaddith_ruling_rel',
       fromJson: _relName,
@@ -103,24 +103,24 @@ abstract class Hadith with _$Hadith {
     )
     String? muhaddithRulingName,
 
-    // FK -> ruling.id (الحكم النهائي)
+    
     @JsonKey(name: 'final_ruling') String? finalRulingId,
 
-    // اسم الحكم النهائي
+    
     @JsonKey(name: 'final_ruling_rel', fromJson: _relName, includeToJson: false)
     String? finalRulingName,
 
-    // FK -> rawis.id
+    
     @JsonKey(name: 'rawi') String? rawiId,
 
-    // اسم الراوي
+    
     @JsonKey(name: 'rawi_rel', fromJson: _relName, includeToJson: false)
     String? rawiName,
 
-    // FK -> books.id
+    
     @JsonKey(name: 'source') String? sourceId,
 
-    // اسم الكتاب
+    
     @JsonKey(name: 'source_rel', fromJson: _relName, includeToJson: false)
     String? sourceName,
 
@@ -129,7 +129,7 @@ abstract class Hadith with _$Hadith {
     @JsonKey(name: 'created_at') required String createdAt,
     @JsonKey(name: 'updated_at') required String updatedAt,
 
-    /// التصنيفات أو المواضيع المرتبطة بالحديث
+    
     @JsonKey(name: 'related_topics') List<String>? relatedTopics,
   }) = _Hadith;
 

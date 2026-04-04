@@ -21,7 +21,7 @@ final hadithFormProvider = Provider.family.autoDispose<FormGroup, Hadith?>((
       value: (hadith?.text ?? '').trim(),
     ),
 
-    // Required FKs
+    
     'rawiId': FormControl<String>(
       validators: [Validators.required],
       value: hadith?.rawiId,
@@ -35,11 +35,11 @@ final hadithFormProvider = Provider.family.autoDispose<FormGroup, Hadith?>((
       value: hadith?.muhaddithRulingId,
     ),
 
-    // Optional FKs
+    
     'finalRulingId': FormControl<String?>(value: hadith?.finalRulingId),
     'explainingId': FormControl<String?>(value: hadith?.explainingId),
 
-    // Optional text
+    
     'sanad': FormControl<String>(value: (hadith?.sanad ?? '').trim()),
     'subValid': FormControl<String?>(value: hadith?.subValid?.trim()),
   });

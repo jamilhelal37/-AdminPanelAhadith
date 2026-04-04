@@ -8,7 +8,7 @@ class TopicClassSupabaseDatasource implements TopicClassRepository {
   final _client = Supabase.instance.client;
   static const String _table = 'topic_class';
 
-  // تحميل التصنيف مع الموضوع والحديث والكتاب المرتبطين به.
+  
   static const String _selectWithRelations = '''
     *,
     topics!topic(name),
@@ -31,7 +31,7 @@ class TopicClassSupabaseDatasource implements TopicClassRepository {
       return (res as List).map((e) {
         final map = e as Map<String, dynamic>;
 
-        // استخراج البيانات المرتبطة.
+        
         String? topicName;
         String? hadithText;
         int? hadithNumber;
@@ -51,7 +51,7 @@ class TopicClassSupabaseDatasource implements TopicClassRepository {
           }
         }
 
-        // إنشاء النموذج بعد دمج العلاقات.
+        
         return TopicClass.fromJson(map).copyWith(
           topicName: topicName,
           hadithText: hadithText,
@@ -72,7 +72,7 @@ class TopicClassSupabaseDatasource implements TopicClassRepository {
       json.remove('created_at');
       json.remove('updated_at');
 
-      // إزالة حقول العلاقات لأنها للقراءة فقط.
+      
       json.remove('topic_name');
       json.remove('hadith_text');
       json.remove('hadith_number');
@@ -97,7 +97,7 @@ class TopicClassSupabaseDatasource implements TopicClassRepository {
       json.remove('id');
       json.remove('created_at');
 
-      // إزالة حقول العلاقات لأنها للقراءة فقط.
+      
       json.remove('topic_name');
       json.remove('hadith_text');
       json.remove('hadith_number');

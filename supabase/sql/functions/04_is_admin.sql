@@ -1,4 +1,4 @@
--- Create a function to check if the user is an admin
+
 create or replace function public.is_admin()
 returns boolean
 language plpgsql

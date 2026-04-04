@@ -1,28 +1,30 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// coverage:ignore-file
-// ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: type=lint, type=warning
+
+
+
+
+
 
 part of 'app_user.dart';
 
-// **************************************************************************
-// FreezedGenerator
-// **************************************************************************
 
-// dart format off
+
+
+
+
 T _$identity<T>(T value) => value;
 
-/// @nodoc
+
 mixin _$AppUser {
 
  String? get id; String? get name; String get email;@JsonKey(name: 'avatar_url') String? get avatarUrl;@JsonKey(name: 'is_activated') bool get isActivated; Gender? get gender; UserType? get type;@JsonKey(name: 'birth_date') String? get birthDate;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String? get updatedAt;
-/// Create a copy of AppUser
-/// with the given fields replaced by the non-null parameter values.
+
+
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $AppUserCopyWith<AppUser> get copyWith => _$AppUserCopyWithImpl<AppUser>(this as AppUser, _$identity);
 
-  /// Serializes this AppUser to a JSON map.
+  
   Map<String, dynamic> toJson();
 
 
@@ -43,7 +45,7 @@ String toString() {
 
 }
 
-/// @nodoc
+
 abstract mixin class $AppUserCopyWith<$Res>  {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) _then) = _$AppUserCopyWithImpl;
 @useResult
@@ -55,7 +57,7 @@ $Res call({
 
 
 }
-/// @nodoc
+
 class _$AppUserCopyWithImpl<$Res>
     implements $AppUserCopyWith<$Res> {
   _$AppUserCopyWithImpl(this._self, this._then);
@@ -63,20 +65,20 @@ class _$AppUserCopyWithImpl<$Res>
   final AppUser _self;
   final $Res Function(AppUser) _then;
 
-/// Create a copy of AppUser
-/// with the given fields replaced by the non-null parameter values.
+
+
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,Object? email = null,Object? avatarUrl = freezed,Object? isActivated = null,Object? gender = freezed,Object? type = freezed,Object? birthDate = freezed,Object? createdAt = null,Object? updatedAt = freezed,}) {
   return _then(_self.copyWith(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String?,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,avatarUrl: freezed == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
-as String?,isActivated: null == isActivated ? _self.isActivated : isActivated // ignore: cast_nullable_to_non_nullable
-as bool,gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
-as Gender?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as UserType?,birthDate: freezed == birthDate ? _self.birthDate : birthDate // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id 
+as String?,name: freezed == name ? _self.name : name 
+as String?,email: null == email ? _self.email : email 
+as String,avatarUrl: freezed == avatarUrl ? _self.avatarUrl : avatarUrl 
+as String?,isActivated: null == isActivated ? _self.isActivated : isActivated 
+as bool,gender: freezed == gender ? _self.gender : gender 
+as Gender?,type: freezed == type ? _self.type : type 
+as UserType?,birthDate: freezed == birthDate ? _self.birthDate : birthDate 
+as String?,createdAt: null == createdAt ? _self.createdAt : createdAt 
+as String,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt 
 as String?,
   ));
 }
@@ -84,19 +86,19 @@ as String?,
 }
 
 
-/// Adds pattern-matching-related methods to [AppUser].
+
 extension AppUserPatterns on AppUser {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AppUser value)?  $default,{required TResult orElse(),}){
 final _that = this;
@@ -107,18 +109,18 @@ return $default(_that);case _:
 
 }
 }
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AppUser value)  $default,){
 final _that = this;
@@ -129,17 +131,17 @@ return $default(_that);case _:
 
 }
 }
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AppUser value)?  $default,){
 final _that = this;
@@ -150,17 +152,17 @@ return $default(_that);case _:
 
 }
 }
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  String? name,  String email, @JsonKey(name: 'avatar_url')  String? avatarUrl, @JsonKey(name: 'is_activated')  bool isActivated,  Gender? gender,  UserType? type, @JsonKey(name: 'birth_date')  String? birthDate, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String? updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
@@ -170,18 +172,18 @@ return $default(_that.id,_that.name,_that.email,_that.avatarUrl,_that.isActivate
 
 }
 }
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  String? name,  String email, @JsonKey(name: 'avatar_url')  String? avatarUrl, @JsonKey(name: 'is_activated')  bool isActivated,  Gender? gender,  UserType? type, @JsonKey(name: 'birth_date')  String? birthDate, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String? updatedAt)  $default,) {final _that = this;
 switch (_that) {
@@ -191,17 +193,17 @@ return $default(_that.id,_that.name,_that.email,_that.avatarUrl,_that.isActivate
 
 }
 }
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  String? name,  String email, @JsonKey(name: 'avatar_url')  String? avatarUrl, @JsonKey(name: 'is_activated')  bool isActivated,  Gender? gender,  UserType? type, @JsonKey(name: 'birth_date')  String? birthDate, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String? updatedAt)?  $default,) {final _that = this;
 switch (_that) {
@@ -214,7 +216,7 @@ return $default(_that.id,_that.name,_that.email,_that.avatarUrl,_that.isActivate
 
 }
 
-/// @nodoc
+
 @JsonSerializable()
 
 class _AppUser implements AppUser {
@@ -232,8 +234,8 @@ class _AppUser implements AppUser {
 @override@JsonKey(name: 'created_at') final  String createdAt;
 @override@JsonKey(name: 'updated_at') final  String? updatedAt;
 
-/// Create a copy of AppUser
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 _$AppUserCopyWith<_AppUser> get copyWith => __$AppUserCopyWithImpl<_AppUser>(this, _$identity);
@@ -260,7 +262,7 @@ String toString() {
 
 }
 
-/// @nodoc
+
 abstract mixin class _$AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   factory _$AppUserCopyWith(_AppUser value, $Res Function(_AppUser) _then) = __$AppUserCopyWithImpl;
 @override @useResult
@@ -272,7 +274,7 @@ $Res call({
 
 
 }
-/// @nodoc
+
 class __$AppUserCopyWithImpl<$Res>
     implements _$AppUserCopyWith<$Res> {
   __$AppUserCopyWithImpl(this._self, this._then);
@@ -280,20 +282,20 @@ class __$AppUserCopyWithImpl<$Res>
   final _AppUser _self;
   final $Res Function(_AppUser) _then;
 
-/// Create a copy of AppUser
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = freezed,Object? email = null,Object? avatarUrl = freezed,Object? isActivated = null,Object? gender = freezed,Object? type = freezed,Object? birthDate = freezed,Object? createdAt = null,Object? updatedAt = freezed,}) {
   return _then(_AppUser(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String?,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,avatarUrl: freezed == avatarUrl ? _self.avatarUrl : avatarUrl // ignore: cast_nullable_to_non_nullable
-as String?,isActivated: null == isActivated ? _self.isActivated : isActivated // ignore: cast_nullable_to_non_nullable
-as bool,gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
-as Gender?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as UserType?,birthDate: freezed == birthDate ? _self.birthDate : birthDate // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id 
+as String?,name: freezed == name ? _self.name : name 
+as String?,email: null == email ? _self.email : email 
+as String,avatarUrl: freezed == avatarUrl ? _self.avatarUrl : avatarUrl 
+as String?,isActivated: null == isActivated ? _self.isActivated : isActivated 
+as bool,gender: freezed == gender ? _self.gender : gender 
+as Gender?,type: freezed == type ? _self.type : type 
+as UserType?,birthDate: freezed == birthDate ? _self.birthDate : birthDate 
+as String?,createdAt: null == createdAt ? _self.createdAt : createdAt 
+as String,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt 
 as String?,
   ));
 }
@@ -301,4 +303,4 @@ as String?,
 
 }
 
-// dart format on
+

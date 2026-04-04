@@ -1,5 +1,5 @@
--- Search function for fake_ahadith only (separate from ahadith).
--- Word-by-word OR matching on normalized search_text.
+
+
 
 create or replace function public.search_fake_ahadith_or_words(
   p_query text,

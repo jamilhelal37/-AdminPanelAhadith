@@ -1,28 +1,30 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// coverage:ignore-file
-// ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: type=lint, type=warning
+
+
+
+
+
 
 part of 'rawi.dart';
 
-// **************************************************************************
-// FreezedGenerator
-// **************************************************************************
 
-// dart format off
+
+
+
+
 T _$identity<T>(T value) => value;
 
-/// @nodoc
+
 mixin _$Rawi {
 
  String? get id; String get name; Gender get gender; String get about;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt;
-/// Create a copy of Rawi
-/// with the given fields replaced by the non-null parameter values.
+
+
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $RawiCopyWith<Rawi> get copyWith => _$RawiCopyWithImpl<Rawi>(this as Rawi, _$identity);
 
-  /// Serializes this Rawi to a JSON map.
+  
   Map<String, dynamic> toJson();
 
 
@@ -43,7 +45,7 @@ String toString() {
 
 }
 
-/// @nodoc
+
 abstract mixin class $RawiCopyWith<$Res>  {
   factory $RawiCopyWith(Rawi value, $Res Function(Rawi) _then) = _$RawiCopyWithImpl;
 @useResult
@@ -55,7 +57,7 @@ $Res call({
 
 
 }
-/// @nodoc
+
 class _$RawiCopyWithImpl<$Res>
     implements $RawiCopyWith<$Res> {
   _$RawiCopyWithImpl(this._self, this._then);
@@ -63,16 +65,16 @@ class _$RawiCopyWithImpl<$Res>
   final Rawi _self;
   final $Res Function(Rawi) _then;
 
-/// Create a copy of Rawi
-/// with the given fields replaced by the non-null parameter values.
+
+
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = null,Object? gender = null,Object? about = null,Object? createdAt = null,Object? updatedAt = null,}) {
   return _then(_self.copyWith(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,gender: null == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
-as Gender,about: null == about ? _self.about : about // ignore: cast_nullable_to_non_nullable
-as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id 
+as String?,name: null == name ? _self.name : name 
+as String,gender: null == gender ? _self.gender : gender 
+as Gender,about: null == about ? _self.about : about 
+as String,createdAt: null == createdAt ? _self.createdAt : createdAt 
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt 
 as String,
   ));
 }
@@ -80,19 +82,19 @@ as String,
 }
 
 
-/// Adds pattern-matching-related methods to [Rawi].
+
 extension RawiPatterns on Rawi {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Rawi value)?  $default,{required TResult orElse(),}){
 final _that = this;
@@ -103,18 +105,18 @@ return $default(_that);case _:
 
 }
 }
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Rawi value)  $default,){
 final _that = this;
@@ -125,17 +127,17 @@ return $default(_that);case _:
 
 }
 }
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Rawi value)?  $default,){
 final _that = this;
@@ -146,17 +148,17 @@ return $default(_that);case _:
 
 }
 }
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  String name,  Gender gender,  String about, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
@@ -166,18 +168,18 @@ return $default(_that.id,_that.name,_that.gender,_that.about,_that.createdAt,_th
 
 }
 }
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  String name,  Gender gender,  String about, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)  $default,) {final _that = this;
 switch (_that) {
@@ -187,17 +189,17 @@ return $default(_that.id,_that.name,_that.gender,_that.about,_that.createdAt,_th
 
 }
 }
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  String name,  Gender gender,  String about, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt)?  $default,) {final _that = this;
 switch (_that) {
@@ -210,7 +212,7 @@ return $default(_that.id,_that.name,_that.gender,_that.about,_that.createdAt,_th
 
 }
 
-/// @nodoc
+
 @JsonSerializable()
 
 class _Rawi implements Rawi {
@@ -224,8 +226,8 @@ class _Rawi implements Rawi {
 @override@JsonKey(name: 'created_at') final  String createdAt;
 @override@JsonKey(name: 'updated_at') final  String updatedAt;
 
-/// Create a copy of Rawi
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 _$RawiCopyWith<_Rawi> get copyWith => __$RawiCopyWithImpl<_Rawi>(this, _$identity);
@@ -252,7 +254,7 @@ String toString() {
 
 }
 
-/// @nodoc
+
 abstract mixin class _$RawiCopyWith<$Res> implements $RawiCopyWith<$Res> {
   factory _$RawiCopyWith(_Rawi value, $Res Function(_Rawi) _then) = __$RawiCopyWithImpl;
 @override @useResult
@@ -264,7 +266,7 @@ $Res call({
 
 
 }
-/// @nodoc
+
 class __$RawiCopyWithImpl<$Res>
     implements _$RawiCopyWith<$Res> {
   __$RawiCopyWithImpl(this._self, this._then);
@@ -272,16 +274,16 @@ class __$RawiCopyWithImpl<$Res>
   final _Rawi _self;
   final $Res Function(_Rawi) _then;
 
-/// Create a copy of Rawi
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = null,Object? gender = null,Object? about = null,Object? createdAt = null,Object? updatedAt = null,}) {
   return _then(_Rawi(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,gender: null == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
-as Gender,about: null == about ? _self.about : about // ignore: cast_nullable_to_non_nullable
-as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id 
+as String?,name: null == name ? _self.name : name 
+as String,gender: null == gender ? _self.gender : gender 
+as Gender,about: null == about ? _self.about : about 
+as String,createdAt: null == createdAt ? _self.createdAt : createdAt 
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt 
 as String,
   ));
 }
@@ -289,4 +291,4 @@ as String,
 
 }
 
-// dart format on
+

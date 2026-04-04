@@ -8,7 +8,7 @@ import '../../../favorites/presentation/providers/favorites_provider.dart';
 import '../providers/book_hadiths_provider.dart';
 import '../../domain/models/book.dart';
 
-/// Book Hadiths Screen - ??? ???? ?????? ???? ????
+
 class BookHadithsScreen extends ConsumerWidget {
   final Book book;
 

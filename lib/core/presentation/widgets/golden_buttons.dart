@@ -1,7 +1,7 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-/// Golden Button Widget - زر بالتصميم الذهبي
+
 class GoldenButton extends StatelessWidget {
   final String text;
   final VoidCallback? onTap;
@@ -60,7 +60,7 @@ class GoldenButton extends StatelessWidget {
   }
 }
 
-/// Golden Menu Button - زر القائمة الذهبي
+
 class GoldenMenuButton extends StatelessWidget {
   final VoidCallback? onTap;
 
@@ -85,7 +85,7 @@ class GoldenMenuButton extends StatelessWidget {
   }
 }
 
-/// Golden Back Button - زر الرجوع الذهبي
+
 class GoldenBackButton extends StatelessWidget {
   final VoidCallback? onTap;
 
@@ -111,7 +111,7 @@ class GoldenBackButton extends StatelessWidget {
   }
 }
 
-/// Golden Icon Button - أيقونة دائرية ذهبية
+
 class GoldenIconButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback? onTap;
@@ -147,7 +147,7 @@ class GoldenIconButton extends StatelessWidget {
   }
 }
 
-/// Golden Chip/Tag Widget
+
 class GoldenChip extends StatelessWidget {
   final String text;
   final IconData? icon;
@@ -200,7 +200,7 @@ class GoldenChip extends StatelessWidget {
   }
 }
 
-/// Golden Loading Indicator
+
 class GoldenLoadingIndicator extends StatelessWidget {
   final String? message;
 

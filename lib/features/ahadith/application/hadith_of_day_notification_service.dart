@@ -41,12 +41,11 @@ class HadithOfDayNotificationService {
       'الإشعارات الفورية العامة والخاصة';
 
   HadithOfDayNotificationService({AwesomeNotifications? notifications})
-    : _notifications = notifications ?? AwesomeNotifications() {
-    _scheduler = HadithOfDayNotificationScheduler(_notifications);
-  }
+    : _notificationsOverride = notifications;
 
-  final AwesomeNotifications _notifications;
-  late final HadithOfDayNotificationScheduler _scheduler;
+  final AwesomeNotifications? _notificationsOverride;
+  late final HadithOfDayNotificationScheduler _scheduler =
+      HadithOfDayNotificationScheduler(_notifications);
   final StreamController<String> _payloadStream =
       StreamController<String>.broadcast();
 
@@ -55,6 +54,9 @@ class HadithOfDayNotificationService {
   String? _launchPayload;
 
   Stream<String> get payloadStream => _payloadStream.stream;
+
+  AwesomeNotifications get _notifications =>
+      _notificationsOverride ?? AwesomeNotifications();
 
   Future<void> initialize() async {
     if (_initialized) return;

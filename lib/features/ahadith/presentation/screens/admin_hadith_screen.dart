@@ -19,12 +19,12 @@ import '../widgets/hadith_dialog.dart';
 import '../widgets/hadith_picker_dialog.dart';
 import '../../../explaining/presentation/widgets/explaining_picker_dialog.dart';
 
-// ? ??? ???? Providers ??? FK ???? ????????? ?????? ??? (???? ??????? ??? ??????)
-// ????:
-// import '../../../rawis/presentation/providers/rawi_future_provider.dart';
-// import '../../../books/presentation/providers/admin_book_future_provider.dart';
-// import '../../../ruling/presentation/providers/admin_ruling_future_provider.dart';
-// import '../../../explaining/presentation/providers/admin_explaining_future_provider.dart';
+
+
+
+
+
+
 
 class AdminHadithScreen extends ConsumerStatefulWidget {
   const AdminHadithScreen({super.key});
@@ -50,7 +50,7 @@ class _AdminHadithScreenState extends ConsumerState<AdminHadithScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // ? ??? ????? ????? (?? ???? ??????)
+    
     final currentSearch = ref.watch(searchProvider);
     if (ctr.text != currentSearch) {
       ctr.value = ctr.value.copyWith(
@@ -63,7 +63,7 @@ class _AdminHadithScreenState extends ConsumerState<AdminHadithScreen> {
 
     return Column(
       children: [
-        // ? ???? ????? + ?? ?????
+        
         Padding(
           padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
           child: Row(
@@ -89,7 +89,7 @@ class _AdminHadithScreenState extends ConsumerState<AdminHadithScreen> {
                           final repo = ref.read(hadithRepositoryProvider);
                           await repo.createHadith(hadith);
 
-                          // ? ???? ???????? ?? dialogCtx (???? ?? router)
+                          
                           if (dialogCtx.mounted) {
                             dialogCtx.pop();
                           }
@@ -122,7 +122,7 @@ class _AdminHadithScreenState extends ConsumerState<AdminHadithScreen> {
           ),
         ),
 
-        // ? ??????
+        
         Expanded(
           child: ahadithAsync.when(
             skipLoadingOnRefresh: true,
@@ -198,12 +198,12 @@ class _AdminHadithScreenState extends ConsumerState<AdminHadithScreen> {
           ExplainingPickerDialog(currentExplainingId: hadith.explainingId),
     );
 
-    // If user cancelled, result is null - do nothing
+    
     if (result == null) return;
 
-    // If user confirmed (either with selection or clear)
+    
     try {
-      // Empty string means clear selection, otherwise use the ID
+      
       final newExplainingId = result.isEmpty ? null : result;
       final updatedHadith = hadith.copyWith(explainingId: newExplainingId);
       final repo = ref.read(hadithRepositoryProvider);
@@ -237,12 +237,12 @@ class _AdminHadithScreenState extends ConsumerState<AdminHadithScreen> {
           HadithPickerDialog(currentHadithId: hadith.subValid),
     );
 
-    // If user cancelled, result is null - do nothing
+    
     if (result == null) return;
 
-    // If user confirmed (either with selection or clear)
+    
     try {
-      // Empty string means clear selection, otherwise use the ID
+      
       final newSubValidId = result.isEmpty ? null : result;
       final updatedHadith = hadith.copyWith(subValid: newSubValidId);
       final repo = ref.read(hadithRepositoryProvider);

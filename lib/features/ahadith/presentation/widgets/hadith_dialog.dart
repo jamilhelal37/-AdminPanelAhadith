@@ -78,7 +78,7 @@ class _HadithDialogState extends ConsumerState<HadithDialog> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // ✅ Hadith Number (required)
+              
               ReactiveTextField<int>(
                 formControlName: 'hadithNumber',
                 keyboardType: TextInputType.number,
@@ -93,7 +93,7 @@ class _HadithDialogState extends ConsumerState<HadithDialog> {
               ),
               const SizedBox(height: 10),
 
-              // ✅ Type (required)
+              
               ReactiveDropdownField<HadithType>(
                 formControlName: 'type',
                 items: HadithType.values
@@ -114,7 +114,7 @@ class _HadithDialogState extends ConsumerState<HadithDialog> {
               ),
               const SizedBox(height: 10),
 
-              // ✅ Text (required) max 8 lines
+              
               ReactiveTextField<String>(
                 formControlName: 'text',
                 minLines: 3,
@@ -142,7 +142,7 @@ class _HadithDialogState extends ConsumerState<HadithDialog> {
               ),
               const SizedBox(height: 10),
 
-              // ✅ Rawi (required)
+              
               rawisAsync.when(
                 loading: () => const Padding(
                   padding: EdgeInsets.symmetric(vertical: 12),
@@ -200,7 +200,7 @@ class _HadithDialogState extends ConsumerState<HadithDialog> {
               ),
               const SizedBox(height: 10),
 
-              // ✅ Source / Book (required)
+              
               booksAsync.when(
                 loading: () => const Padding(
                   padding: EdgeInsets.symmetric(vertical: 12),
@@ -258,7 +258,7 @@ class _HadithDialogState extends ConsumerState<HadithDialog> {
               ),
               const SizedBox(height: 10),
 
-              // ✅ Muhaddith Ruling (required) + Final Ruling (optional)
+              
               rulingsAsync.when(
                 loading: () => const Padding(
                   padding: EdgeInsets.symmetric(vertical: 12),

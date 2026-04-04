@@ -19,8 +19,8 @@ final adminHadithsFutureProvider = FutureProvider.autoDispose<List<Hadith>>((
   final search = _sanitizeAdminSearchInput(ref.watch(searchProvider));
 
   return repo.getHadiths(
-    // Uses the same backend RPC normalization as general search
-    // (normalize_arabic_search_text in SQL search functions).
+    
+    
     searchQuery: search.isEmpty ? null : search,
     searchMode: 'any',
   );

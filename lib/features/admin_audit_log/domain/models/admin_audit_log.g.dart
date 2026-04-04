@@ -1,10 +1,12 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+
 
 part of 'admin_audit_log.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+
+
+
 
 _AdminAuditLog _$AdminAuditLogFromJson(Map<String, dynamic> json) =>
     _AdminAuditLog(

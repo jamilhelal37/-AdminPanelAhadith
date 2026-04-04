@@ -8,7 +8,7 @@ class SimilarAhadithSupabaseDatasource implements SimilarAhadithRepository {
   final _client = Supabase.instance.client;
   static const String _table = 'similar_ahadith';
 
-  // تحميل بيانات الحديث الرئيسي والحديث المشابه مع العلاقات المرتبطة.
+  
   static const String _selectWithRelations = '''
     *,
     main_ahadith:main_hadith(text, hadith_number, books!source(name)),
@@ -31,7 +31,7 @@ class SimilarAhadithSupabaseDatasource implements SimilarAhadithRepository {
       return (res as List).map((e) {
         final map = e as Map<String, dynamic>;
 
-        // استخراج بيانات الحديث الرئيسي.
+        
         String? mainHadithText;
         int? mainHadithNumber;
         String? mainBookName;
@@ -46,7 +46,7 @@ class SimilarAhadithSupabaseDatasource implements SimilarAhadithRepository {
           }
         }
 
-        // استخراج بيانات الحديث المشابه.
+        
         String? simHadithText;
         int? simHadithNumber;
         String? simBookName;
@@ -61,7 +61,7 @@ class SimilarAhadithSupabaseDatasource implements SimilarAhadithRepository {
           }
         }
 
-        // إنشاء النموذج بعد دمج بيانات العلاقات.
+        
         return SimilarAhadith.fromJson(map).copyWith(
           mainHadithText: mainHadithText,
           mainHadithNumber: mainHadithNumber,
@@ -86,7 +86,7 @@ class SimilarAhadithSupabaseDatasource implements SimilarAhadithRepository {
       json.remove('created_at');
       json.remove('updated_at');
 
-      // إزالة حقول العلاقات لأنها للقراءة فقط.
+      
       json.remove('main_hadith_text');
       json.remove('main_hadith_number');
       json.remove('main_book_name');
@@ -115,7 +115,7 @@ class SimilarAhadithSupabaseDatasource implements SimilarAhadithRepository {
       json.remove('id');
       json.remove('created_at');
 
-      // إزالة حقول العلاقات لأنها للقراءة فقط.
+      
       json.remove('main_hadith_text');
       json.remove('main_hadith_number');
       json.remove('main_book_name');

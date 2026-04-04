@@ -1,10 +1,12 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+
 
 part of 'similar_ahadith.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+
+
+
 
 _SimilarAhadith _$SimilarAhadithFromJson(Map<String, dynamic> json) =>
     _SimilarAhadith(

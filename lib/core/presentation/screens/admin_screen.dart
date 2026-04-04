@@ -338,8 +338,8 @@ class _AdminScreenState extends ConsumerState<AdminScreen> {
         ref.invalidate(adminSimilarAhadithsFutureProvider);
         break;
       case 12:
-        // Notifications screen uses the admin users list for the single-user
-        // picker, so refreshing this section means refreshing that source.
+        
+        
         ref.invalidate(adminUsersProvider);
         break;
       case 13:
@@ -350,12 +350,12 @@ class _AdminScreenState extends ConsumerState<AdminScreen> {
         ref.invalidate(
           adminTableCountProvider(AdminCountTarget.proUpgradeDecisions),
         );
-        // Upgrade decisions can change the user's effective upgrade state.
+        
         ref.invalidate(adminUsersProvider);
         ref.invalidate(authNotifierProvider);
         break;
       case 14:
-        // Users section refresh.
+        
         ref.invalidate(adminUsersProvider);
         break;
       case 15:
@@ -752,84 +752,84 @@ class _AdminTopBar extends ConsumerWidget {
 }
 
 
-/*
-class _SettingsButton extends ConsumerWidget {
-  const _SettingsButton({required this.extended});
 
-  final bool extended;
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final cs = Theme.of(context).colorScheme;
 
-    return Material(
-      color: Colors.transparent,
-      child: PopupMenuButton<_RailFooterMenuAction>(
-        tooltip: 'الإعدادات',
-        onSelected: (action) {
-          switch (action) {
-            case _RailFooterMenuAction.theme:
-              showDialog(context: context, builder: (_) => ThemeDialogWidget());
-              break;
-            case _RailFooterMenuAction.logout:
-              ref.read(authNotifierProvider.notifier).logout();
-              break;
-          }
-        },
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        itemBuilder: (context) => [
-          const PopupMenuItem<_RailFooterMenuAction>(
-            value: _RailFooterMenuAction.theme,
-            child: Row(
-              children: [
-                Icon(Icons.palette_outlined),
-                SizedBox(width: 8),
-                Text('تخصيص السمة'),
-              ],
-            ),
-          ),
-          PopupMenuItem<_RailFooterMenuAction>(
-            value: _RailFooterMenuAction.logout,
-            child: Row(
-              children: [
-                Icon(Icons.logout_rounded, color: cs.error),
-                const SizedBox(width: 8),
-                Text('تسجيل الخروج', style: TextStyle(color: cs.error)),
-              ],
-            ),
-          ),
-        ],
-        child: _RailIdentityTile(
-          extended: extended,
-          icon: Icons.settings_outlined,
-          label: 'الإعدادات',
-        ),
-      ),
-    );
-  }
-}
 
-class _RailFooterActions extends StatelessWidget {
-  const _RailFooterActions({required this.extended});
 
-  final bool extended;
 
-  @override
-  Widget build(BuildContext context) {
-    if (extended) {
-      return const Align(
-        alignment: Alignment.centerRight,
-        child: _SettingsButton(extended: true),
-      );
-    }
 
-    return const Align(
-      alignment: Alignment.center,
-      child: _SettingsButton(extended: false),
-    );
-  }
-}
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class _NavItem extends StatelessWidget {
   const _NavItem({

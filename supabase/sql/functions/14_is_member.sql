@@ -1,4 +1,4 @@
--- Create a function to check if the user is a member
+
 create or replace function public.is_member()
 returns boolean
 language plpgsql

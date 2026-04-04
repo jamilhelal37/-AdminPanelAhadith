@@ -1,14 +1,14 @@
--- =====================================================
--- Pro Upgrade Full Bundle (Tables 17-18-19)
--- Final flow: request -> upload one or more certificates -> submit -> under_review -> supervisor decision
--- No payment tables, fields, or triggers.
--- =====================================================
 
--- ========================================
--- TABLES (17-18-19)
--- ========================================
 
--- FILE: tables/17_pro_upgrade_requests.sql
+
+
+
+
+
+
+
+
+
 create table if not exists public.pro_upgrade_requests (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null,
@@ -25,7 +25,7 @@ create unique index if not exists uq_pro_upgrade_requests_user_active
   where status <> 'reviewed';
 
 
--- FILE: tables/18_pro_upgrade_certificates.sql
+
 create table if not exists public.pro_upgrade_certificates (
   id uuid primary key default gen_random_uuid(),
   request_id uuid not null,
@@ -36,7 +36,7 @@ create table if not exists public.pro_upgrade_certificates (
 );
 
 
--- FILE: tables/19_pro_upgrade_decisions.sql
+
 create table if not exists public.pro_upgrade_decisions (
   id uuid primary key default gen_random_uuid(),
   request_id uuid not null,
@@ -55,9 +55,9 @@ create table if not exists public.pro_upgrade_decisions (
 );
 
 
--- ========================================
--- INDEXES (Related)
--- ========================================
+
+
+
 
 create index if not exists idx_pro_upgrade_requests_user_id
   on public.pro_upgrade_requests(user_id);
@@ -87,11 +87,11 @@ create index if not exists idx_pro_upgrade_decisions_created_at
   on public.pro_upgrade_decisions(created_at);
 
 
--- ========================================
--- FUNCTIONS (Related)
--- ========================================
 
--- FILE: functions/15_owns_pro_upgrade_request.sql
+
+
+
+
 create or replace function public.owns_pro_upgrade_request(p_request_id uuid)
 returns boolean
 language plpgsql
@@ -108,7 +108,7 @@ end;
 $$;
 
 
--- FILE: functions/08_create_pro_upgrade_request.sql
+
 create or replace function public.create_pro_upgrade_request(
   p_user_id uuid
 )
@@ -151,7 +151,7 @@ end;
 $$ language plpgsql security definer;
 
 
--- FILE: functions/16_sync_pro_upgrade_certificate_from_storage.sql
+
 create or replace function public.sync_pro_upgrade_certificate_from_storage()
 returns trigger
 language plpgsql
@@ -193,7 +193,7 @@ end;
 $$;
 
 
--- FILE: functions/17_handle_pro_upgrade_sequence.sql
+
 create or replace function public.submit_pro_upgrade_request(
   p_request_id uuid
 )
@@ -254,11 +254,11 @@ end;
 $$;
 
 
--- ========================================
--- POLICIES (Related)
--- ========================================
 
--- FILE: policies/17_pro_upgrade_requests.sql
+
+
+
+
 alter table public.pro_upgrade_requests enable row level security;
 
 drop policy if exists pro_upgrade_requests_select_own on public.pro_upgrade_requests;
@@ -298,7 +298,7 @@ create policy pro_upgrade_requests_delete_admin
   using (public.is_admin());
 
 
--- FILE: policies/18_pro_upgrade_certificates.sql
+
 alter table public.pro_upgrade_certificates enable row level security;
 
 drop policy if exists pro_upgrade_certificates_select_own on public.pro_upgrade_certificates;
@@ -335,7 +335,7 @@ create policy pro_upgrade_certificates_delete_admin
   using (public.is_admin());
 
 
--- FILE: policies/20_pro_upgrade_decisions.sql
+
 alter table public.pro_upgrade_decisions enable row level security;
 
 drop policy if exists pro_upgrade_decisions_select_all on public.pro_upgrade_decisions;
@@ -372,24 +372,24 @@ create policy pro_upgrade_decisions_delete_admin
   using (public.is_admin());
 
 
--- ========================================
--- TRIGGERS (Related)
--- ========================================
 
--- FILE: triggers/18_pro_upgrade_certificates_storage.sql
+
+
+
+
 drop trigger if exists trg_sync_pro_upgrade_certificate_from_storage on storage.objects;
 create trigger trg_sync_pro_upgrade_certificate_from_storage
 after insert on storage.objects
 for each row
 execute function public.sync_pro_upgrade_certificate_from_storage();
 
--- FILE: triggers/19_pro_upgrade_sequence.sql
+
 drop trigger if exists trg_handle_pro_upgrade_certificate_insert on public.pro_upgrade_certificates;
 
 
--- ========================================
--- STORAGE (Certificates Bucket Related)
--- ========================================
+
+
+
 
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values (
@@ -406,7 +406,7 @@ set
   file_size_limit = excluded.file_size_limit,
   allowed_mime_types = excluded.allowed_mime_types;
 
--- Path format: {user_id}/{request_id}/{filename}
+
 drop policy if exists "scholars-user-upload" on storage.objects;
 create policy "scholars-user-upload"
   on storage.objects

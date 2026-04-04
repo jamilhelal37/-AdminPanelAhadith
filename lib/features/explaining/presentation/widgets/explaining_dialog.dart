@@ -46,8 +46,8 @@ class _ExplainingDialogState extends ConsumerState<ExplainingDialog> {
             children: [
               ReactiveTextField<String>(
                 formControlName: "text",
-                minLines: 3, // يبدأ متعدد الأسطر
-                maxLines: 8, // ✅ أقصى 8 أسطر
+                minLines: 3, 
+                maxLines: 8, 
                 decoration: InputDecoration(
                   labelText: 'النص',
                   alignLabelWithHint: true,

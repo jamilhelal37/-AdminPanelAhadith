@@ -11,7 +11,7 @@ import '../../data/repositories/favorites_repository_provider.dart';
 import '../../data/repositories/favorites_repository.dart';
 import '../../domain/models/favorite.dart';
 
-/// مزود التدفق للمفضلة: المصدر المباشر للحالة في الواجهة.
+
 final userFavoritesStreamProvider = StreamProvider<List<Favorite>>((ref) {
   final userId = ref.watch(authNotifierProvider).valueOrNull?.id;
   if (userId == null || userId.isEmpty) {
@@ -22,7 +22,7 @@ final userFavoritesStreamProvider = StreamProvider<List<Favorite>>((ref) {
   return repository.getUserFavoritesStream();
 });
 
-/// مزود بيانات الأحاديث الخاصة بالمفضلة (يحافظ على الحالة بين التنقلات).
+
 final favoritesHadithCatalogProvider = FutureProvider<List<Hadith>>((
   ref,
 ) async {
@@ -30,13 +30,13 @@ final favoritesHadithCatalogProvider = FutureProvider<List<Hadith>>((
   return repository.getHadiths();
 });
 
-/// مزود بيانات الكتب الخاصة بالمفضلة.
+
 final favoritesBooksCatalogProvider = FutureProvider<List<Book>>((ref) async {
   final repository = ref.read(bookRepositoryProvider);
   return repository.getBooks(null);
 });
 
-/// مزود بيانات الأحاديث المشابهة الخاصة بالمفضلة.
+
 final favoritesSimilarCatalogProvider = FutureProvider<List<SimilarAhadith>>((
   ref,
 ) async {
@@ -44,7 +44,7 @@ final favoritesSimilarCatalogProvider = FutureProvider<List<SimilarAhadith>>((
   return repository.getSimilarAhadiths(null);
 });
 
-/// مزود التحقق من كون الحديث في المفضلة من التدفق المباشر.
+
 final isFavoriteProvider = Provider.family<AsyncValue<bool>, String>((
   ref,
   hadithId,
@@ -55,14 +55,14 @@ final isFavoriteProvider = Provider.family<AsyncValue<bool>, String>((
   });
 });
 
-/// مزود إضافة أو حذف الحديث من المفضلة
+
 final toggleFavoriteProvider =
     StateNotifierProvider<ToggleFavoriteNotifier, AsyncValue<void>>((ref) {
       final repository = ref.read(favoritesRepositoryProvider);
       return ToggleFavoriteNotifier(ref, repository);
     });
 
-/// Notifier لإدارة عملية الإضافة والحذف من المفضلة
+
 class ToggleFavoriteNotifier extends StateNotifier<AsyncValue<void>> {
   ToggleFavoriteNotifier(this._ref, this._repository)
     : super(const AsyncValue.data(null));
@@ -70,7 +70,7 @@ class ToggleFavoriteNotifier extends StateNotifier<AsyncValue<void>> {
   final Ref _ref;
   final FavoritesRepository _repository;
 
-  /// أضف أو احذف حديثاً من المفضلة
+  
   Future<void> toggleFavorite(String hadithId, bool isFavorite) async {
     state = const AsyncValue.loading();
 

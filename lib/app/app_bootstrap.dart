@@ -1,5 +1,6 @@
 ﻿import 'package:ahadith/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -19,17 +20,36 @@ Future<AppBootstrapResult> bootstrapApp() async {
   await _configureSystemUi();
   await dotenv.load(fileName: '.env');
 
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
   final supabaseUrl = dotenv.env['SUPABASE_URL'];
   final supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
 
-  await Supabase.initialize(url: supabaseUrl!, anonKey: supabaseAnonKey!);
+  if (supabaseUrl == null || supabaseUrl.trim().isEmpty) {
+    throw Exception('SUPABASE_URL is missing from .env');
+  }
+  if (supabaseAnonKey == null || supabaseAnonKey.trim().isEmpty) {
+    throw Exception('SUPABASE_ANON_KEY is missing from .env');
+  }
+
+  await Supabase.initialize(
+    url: supabaseUrl.trim(),
+    anonKey: supabaseAnonKey.trim(),
+  );
 
   final hadithOfDayNotificationService = HadithOfDayNotificationService();
   final pushNotificationService = PushNotificationService(
     localNotifications: hadithOfDayNotificationService,
   );
+
+  if (!kIsWeb) {
+    try {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+    } catch (error, stackTrace) {
+      debugPrint('Firebase init failed: $error');
+      debugPrintStack(stackTrace: stackTrace);
+    }
+  }
 
   try {
     await hadithOfDayNotificationService.initialize();

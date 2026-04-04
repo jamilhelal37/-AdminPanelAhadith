@@ -30,7 +30,7 @@ class _QuestionDialogState extends ConsumerState<QuestionDialog> {
     final form = ref.watch(questionFormProvider(widget.question));
     final colorScheme = Theme.of(context).colorScheme;
 
-    // عند التعديل نعطل الحقول الثابتة ونبقي حقل الإجابة فقط قابلًا للتحرير.
+    
     if (isEditing && !_didSetupEditMode) {
       _didSetupEditMode = true;
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -40,7 +40,7 @@ class _QuestionDialogState extends ConsumerState<QuestionDialog> {
       });
     }
 
-    // نفعّل إظهار الأخطاء مرة واحدة بعد أول بناء.
+    
     if (!_hasTriggeredValidation) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
@@ -151,7 +151,7 @@ class _QuestionDialogState extends ConsumerState<QuestionDialog> {
               ),
               const SizedBox(height: 10),
 
-              // الجواب يظهر دائمًا، وعند التعديل يكون هو الحقل الوحيد القابل للتحرير.
+              
               ReactiveTextField<String>(
                 formControlName: 'answerText',
                 minLines: 3,
@@ -174,7 +174,7 @@ class _QuestionDialogState extends ConsumerState<QuestionDialog> {
               );
 
               final canSave = isEditing
-                  ? !isLoading // عند التعديل لا نعتمد form.valid لأن الحقول الثابتة معطلة.
+                  ? !isLoading 
                   : (formGroup.valid && !isLoading);
 
               return ElevatedButton(
@@ -198,7 +198,7 @@ class _QuestionDialogState extends ConsumerState<QuestionDialog> {
                               '';
 
                           if (!isEditing) {
-                            // إنشاء سؤال جديد مع كامل الحقول.
+                            
                             final askerId =
                                 (formGroup.control('askerId').value as String)
                                     .trim();
@@ -222,7 +222,7 @@ class _QuestionDialogState extends ConsumerState<QuestionDialog> {
 
                             await widget.onSave(q);
                           } else {
-                            // عند التعديل نحدث الإجابة فقط.
+                            
                             final updated = widget.question!.copyWith(
                               answerText: answer.isEmpty ? null : answer,
                               isActive:

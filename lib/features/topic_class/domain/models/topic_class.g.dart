@@ -1,10 +1,12 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+
 
 part of 'topic_class.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+
+
+
 
 _TopicClass _$TopicClassFromJson(Map<String, dynamic> json) => _TopicClass(
   id: json['id'] as String?,

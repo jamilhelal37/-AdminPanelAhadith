@@ -1,4 +1,4 @@
--- Sync uploaded certificate files from Storage into pro_upgrade_certificates
+
 create or replace function public.sync_pro_upgrade_certificate_from_storage()
 returns trigger
 language plpgsql

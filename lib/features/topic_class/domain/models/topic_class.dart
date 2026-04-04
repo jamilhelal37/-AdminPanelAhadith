@@ -1,4 +1,4 @@
-﻿// ignore_for_file: invalid_annotation_target
+﻿
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,7 +13,7 @@ abstract class TopicClass with _$TopicClass {
     @JsonKey(name: 'hadith') String? hadithId,
     @JsonKey(name: 'created_at') required String createdAt,
     @JsonKey(name: 'updated_at') required String updatedAt,
-    // Relations for display
+    
     @JsonKey(name: 'topic_name') String? topicName,
     @JsonKey(name: 'hadith_text') String? hadithText,
     @JsonKey(name: 'hadith_number') int? hadithNumber,

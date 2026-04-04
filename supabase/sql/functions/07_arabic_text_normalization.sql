@@ -1,6 +1,6 @@
--- Arabic text normalization helpers
--- 1) normalize_arabic_diacritics: remove tashkeel only
--- 2) normalize_arabic_search_text: remove tashkeel, normalize hamza/alef, remove punctuation, collapse spaces
+
+
+
 
 create or replace function public.normalize_arabic_diacritics(p_text text)
 returns text

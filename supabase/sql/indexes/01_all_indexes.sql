@@ -58,7 +58,7 @@ create index if not exists idx_admin_audit_log_record_id on public.admin_audit_l
 create index if not exists idx_admin_audit_log_actor on public.admin_audit_log(actor_user_id);
 create index if not exists idx_admin_audit_log_created_at on public.admin_audit_log(created_at);
 
--- Pro Upgrade System Indexes
+
 create index if not exists idx_pro_upgrade_requests_user_id on public.pro_upgrade_requests(user_id);
 create index if not exists idx_pro_upgrade_requests_created_at on public.pro_upgrade_requests(created_at);
 create index if not exists idx_pro_upgrade_requests_status_created_at on public.pro_upgrade_requests(status, created_at desc);

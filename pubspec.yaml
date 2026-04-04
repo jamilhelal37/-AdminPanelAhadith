@@ -44,7 +44,6 @@ dependencies:
   syncfusion_flutter_datagrid: ^31.2.3
   syncfusion_flutter_core: ^31.2.3
   web: ^1.1.1
-  
 
 dev_dependencies:
   flutter_test:
@@ -62,9 +61,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/fonts/
-    - assets/translations/
     - assets/svgs/
-    - assets/no_data.json
     - .env
 
   fonts:
@@ -105,4 +102,3 @@ flutter_native_splash:
   android_12:
     color: "#FDFBF8"
     image: assets/images/pic1_splash.png
-    

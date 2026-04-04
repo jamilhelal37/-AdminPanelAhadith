@@ -1,4 +1,4 @@
--- Create a function to handle new user signup
+
 create or replace function public.handle_new_user()
 returns trigger
 language plpgsql

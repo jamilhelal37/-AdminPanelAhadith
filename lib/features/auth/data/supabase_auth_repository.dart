@@ -14,6 +14,8 @@ class AuthRepository {
   final SupabaseClient _supabase;
   AuthRepository(this._supabase);
 
+  String _normalizeEmail(String email) => email.trim().toLowerCase();
+
   bool _isInvalidSessionError(Object error) {
     final message = error.toString().toLowerCase();
     return message.contains('invalid jwt') ||
@@ -34,6 +36,13 @@ class AuthRepository {
     }
 
     final message = error.toString();
+    if (message.contains('ClientException: Failed to fetch') ||
+        message.contains('Failed to fetch') ||
+        message.contains('XMLHttpRequest error')) {
+      return AuthException(
+        'تعذر الاتصال بخدمة تسجيل الدخول. إذا كنت تعمل على نسخة الويب محليًا فتأكد من تشغيلها على المسار الصحيح وأن المتصفح أو الـ VPN لا يحجب طلبات Supabase.',
+      );
+    }
     if (message.contains('Failed host lookup') ||
         message.contains('SocketException')) {
       return AuthException(
@@ -69,8 +78,9 @@ class AuthRepository {
     String? birthDate,
   }) async {
     try {
+      final normalizedEmail = _normalizeEmail(email);
       final res = await _supabase.auth.signUp(
-        email: email,
+        email: normalizedEmail,
         password: password,
         data: {
           'name': name,
@@ -86,7 +96,7 @@ class AuthRepository {
         await _supabase.from('app_user').upsert({
           'id': authUser.id,
           'name': name,
-          'email': email,
+          'email': normalizedEmail,
           'is_activated': true,
           'gender': gender,
           'type': type ?? 'member',
@@ -100,9 +110,13 @@ class AuthRepository {
     }
   }
 
-  Future<void> signInWithEmail(String email, String password) async {
+  Future<User?> signInWithEmail(String email, String password) async {
     try {
-      await _supabase.auth.signInWithPassword(email: email, password: password);
+      final response = await _supabase.auth.signInWithPassword(
+        email: _normalizeEmail(email),
+        password: password,
+      );
+      return response.user ?? _supabase.auth.currentUser;
     } catch (e) {
       throw _asAuthException(e);
     }
@@ -126,7 +140,6 @@ class AuthRepository {
         'GOOGLE_SERVER_CLIENT_ID',
       ]);
 
-      // For iOS/web, clientId may be required by GoogleSignIn.
       final platformClientId = _firstEnv([
         if (kIsWeb) 'GOOGLE_WEB_CLIENT_ID' else 'GOOGLE_IOS_ID',
         'GOOGLE_IOS_CLIENT_ID',
@@ -164,8 +177,6 @@ class AuthRepository {
       nativeFlowError = e;
     }
 
-    // If direct/native flow is clearly misconfigured, surface that error directly
-    // instead of masking it with OAuth fallback errors.
     if (nativeFlowError is AuthException &&
         nativeFlowError.message.contains('Google Sign-In misconfigured')) {
       throw nativeFlowError;
@@ -211,19 +222,20 @@ class AuthRepository {
     }
   }
 
-  Future<void> _syncAppUserFromAuth() async {
-    final authUser = _supabase.auth.currentUser;
-    if (authUser == null) {
+  Future<void> _syncAppUserFromAuth({User? authUser}) async {
+    final resolvedAuthUser = authUser ?? _supabase.auth.currentUser;
+    if (resolvedAuthUser == null) {
       throw AuthException('No authenticated user after sign-in.');
     }
 
-    final email = authUser.email;
+    final email = resolvedAuthUser.email;
     if (email == null || email.trim().isEmpty) {
       throw AuthException('Authenticated user has no email.');
     }
+    final normalizedEmail = _normalizeEmail(email);
 
-    final metadata = authUser.userMetadata ?? <String, dynamic>{};
-    final fallbackName = email.split('@').first;
+    final metadata = resolvedAuthUser.userMetadata ?? <String, dynamic>{};
+    final fallbackName = normalizedEmail.split('@').first;
     final name = (metadata['full_name'] as String?)?.trim().isNotEmpty == true
         ? (metadata['full_name'] as String).trim()
         : (metadata['name'] as String?)?.trim().isNotEmpty == true
@@ -233,13 +245,13 @@ class AuthRepository {
     final existingProfile = await _supabase
         .from('app_user')
         .select('is_activated, type, gender, birth_date, avatar_url')
-        .eq('id', authUser.id)
+        .eq('id', resolvedAuthUser.id)
         .maybeSingle();
 
     await _supabase.from('app_user').upsert({
-      'id': authUser.id,
+      'id': resolvedAuthUser.id,
       'name': name,
-      'email': email,
+      'email': normalizedEmail,
       'avatar_url':
           metadata['avatar_url'] ??
           metadata['picture'] ??
@@ -247,8 +259,7 @@ class AuthRepository {
       'is_activated': existingProfile?['is_activated'] ?? true,
       'gender': existingProfile?['gender'] ?? metadata['gender'],
       'type': existingProfile?['type'] ?? metadata['type'] ?? 'member',
-      'birth_date':
-          existingProfile?['birth_date'] ?? metadata['birth_date'],
+      'birth_date': existingProfile?['birth_date'] ?? metadata['birth_date'],
     }, onConflict: 'id');
   }
 
@@ -265,12 +276,13 @@ class AuthRepository {
       if (authUser == null) {
         throw AuthException('No authenticated user.');
       }
+      final normalizedEmail = _normalizeEmail(email);
 
       final updated = await _supabase
           .from('app_user')
           .update({
             'name': name,
-            'email': email,
+            'email': normalizedEmail,
             'avatar_url': avatarUrl,
             'gender': gender,
             'type': type,
@@ -360,9 +372,7 @@ class AuthRepository {
         if (path != null && path.isNotEmpty) {
           try {
             await _supabase.storage.from('avatars').remove([path]);
-          } catch (_) {
-            // Keep profile update successful even if old file cleanup fails.
-          }
+          } catch (_) {}
         }
       }
 
@@ -375,9 +385,17 @@ class AuthRepository {
     }
   }
 
-  Future<AppUser?> getAppUser() async {
+  Future<AppUser?> getAppUser({
+    User? authUser,
+    bool verifySession = true,
+  }) async {
     try {
-      final user = await _getVerifiedAuthUser();
+      final user =
+          authUser ??
+          (verifySession
+              ? await _getVerifiedAuthUser()
+              : (_supabase.auth.currentUser ??
+                    _supabase.auth.currentSession?.user));
       if (user == null) return null;
 
       final res = await _supabase
@@ -387,7 +405,7 @@ class AuthRepository {
           .maybeSingle();
 
       if (res == null) {
-        await _syncAppUserFromAuth();
+        await _syncAppUserFromAuth(authUser: user);
         final syncedRes = await _supabase
             .from('app_user')
             .select('*')

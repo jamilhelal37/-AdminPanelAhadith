@@ -1,10 +1,11 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
 
 part of 'app_user.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+
+
+
 
 _AppUser _$AppUserFromJson(Map<String, dynamic> json) => _AppUser(
   id: json['id'] as String?,

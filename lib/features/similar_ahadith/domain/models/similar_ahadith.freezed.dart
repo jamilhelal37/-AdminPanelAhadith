@@ -1,29 +1,31 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// coverage:ignore-file
-// ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: type=lint, type=warning
+
+
+
+
+
 
 part of 'similar_ahadith.dart';
 
-// **************************************************************************
-// FreezedGenerator
-// **************************************************************************
 
-// dart format off
+
+
+
+
 T _$identity<T>(T value) => value;
 
-/// @nodoc
+
 mixin _$SimilarAhadith {
 
- String? get id;@JsonKey(name: 'main_hadith') String? get mainHadithId;@JsonKey(name: 'sim_hadith') String? get simHadithId;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt;// حقول العلاقات (للقراءة فقط)
+ String? get id;@JsonKey(name: 'main_hadith') String? get mainHadithId;@JsonKey(name: 'sim_hadith') String? get simHadithId;@JsonKey(name: 'created_at') String get createdAt;@JsonKey(name: 'updated_at') String get updatedAt;
 @JsonKey(includeToJson: false) String? get mainHadithText;@JsonKey(includeToJson: false) int? get mainHadithNumber;@JsonKey(includeToJson: false) String? get mainBookName;@JsonKey(includeToJson: false) String? get simHadithText;@JsonKey(includeToJson: false) int? get simHadithNumber;@JsonKey(includeToJson: false) String? get simBookName;
-/// Create a copy of SimilarAhadith
-/// with the given fields replaced by the non-null parameter values.
+
+
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $SimilarAhadithCopyWith<SimilarAhadith> get copyWith => _$SimilarAhadithCopyWithImpl<SimilarAhadith>(this as SimilarAhadith, _$identity);
 
-  /// Serializes this SimilarAhadith to a JSON map.
+  
   Map<String, dynamic> toJson();
 
 
@@ -44,7 +46,7 @@ String toString() {
 
 }
 
-/// @nodoc
+
 abstract mixin class $SimilarAhadithCopyWith<$Res>  {
   factory $SimilarAhadithCopyWith(SimilarAhadith value, $Res Function(SimilarAhadith) _then) = _$SimilarAhadithCopyWithImpl;
 @useResult
@@ -56,7 +58,7 @@ $Res call({
 
 
 }
-/// @nodoc
+
 class _$SimilarAhadithCopyWithImpl<$Res>
     implements $SimilarAhadithCopyWith<$Res> {
   _$SimilarAhadithCopyWithImpl(this._self, this._then);
@@ -64,21 +66,21 @@ class _$SimilarAhadithCopyWithImpl<$Res>
   final SimilarAhadith _self;
   final $Res Function(SimilarAhadith) _then;
 
-/// Create a copy of SimilarAhadith
-/// with the given fields replaced by the non-null parameter values.
+
+
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? mainHadithId = freezed,Object? simHadithId = freezed,Object? createdAt = null,Object? updatedAt = null,Object? mainHadithText = freezed,Object? mainHadithNumber = freezed,Object? mainBookName = freezed,Object? simHadithText = freezed,Object? simHadithNumber = freezed,Object? simBookName = freezed,}) {
   return _then(_self.copyWith(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,mainHadithId: freezed == mainHadithId ? _self.mainHadithId : mainHadithId // ignore: cast_nullable_to_non_nullable
-as String?,simHadithId: freezed == simHadithId ? _self.simHadithId : simHadithId // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as String,mainHadithText: freezed == mainHadithText ? _self.mainHadithText : mainHadithText // ignore: cast_nullable_to_non_nullable
-as String?,mainHadithNumber: freezed == mainHadithNumber ? _self.mainHadithNumber : mainHadithNumber // ignore: cast_nullable_to_non_nullable
-as int?,mainBookName: freezed == mainBookName ? _self.mainBookName : mainBookName // ignore: cast_nullable_to_non_nullable
-as String?,simHadithText: freezed == simHadithText ? _self.simHadithText : simHadithText // ignore: cast_nullable_to_non_nullable
-as String?,simHadithNumber: freezed == simHadithNumber ? _self.simHadithNumber : simHadithNumber // ignore: cast_nullable_to_non_nullable
-as int?,simBookName: freezed == simBookName ? _self.simBookName : simBookName // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id 
+as String?,mainHadithId: freezed == mainHadithId ? _self.mainHadithId : mainHadithId 
+as String?,simHadithId: freezed == simHadithId ? _self.simHadithId : simHadithId 
+as String?,createdAt: null == createdAt ? _self.createdAt : createdAt 
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt 
+as String,mainHadithText: freezed == mainHadithText ? _self.mainHadithText : mainHadithText 
+as String?,mainHadithNumber: freezed == mainHadithNumber ? _self.mainHadithNumber : mainHadithNumber 
+as int?,mainBookName: freezed == mainBookName ? _self.mainBookName : mainBookName 
+as String?,simHadithText: freezed == simHadithText ? _self.simHadithText : simHadithText 
+as String?,simHadithNumber: freezed == simHadithNumber ? _self.simHadithNumber : simHadithNumber 
+as int?,simBookName: freezed == simBookName ? _self.simBookName : simBookName 
 as String?,
   ));
 }
@@ -86,19 +88,19 @@ as String?,
 }
 
 
-/// Adds pattern-matching-related methods to [SimilarAhadith].
+
 extension SimilarAhadithPatterns on SimilarAhadith {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SimilarAhadith value)?  $default,{required TResult orElse(),}){
 final _that = this;
@@ -109,18 +111,18 @@ return $default(_that);case _:
 
 }
 }
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SimilarAhadith value)  $default,){
 final _that = this;
@@ -131,17 +133,17 @@ return $default(_that);case _:
 
 }
 }
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SimilarAhadith value)?  $default,){
 final _that = this;
@@ -152,17 +154,17 @@ return $default(_that);case _:
 
 }
 }
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id, @JsonKey(name: 'main_hadith')  String? mainHadithId, @JsonKey(name: 'sim_hadith')  String? simHadithId, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt, @JsonKey(includeToJson: false)  String? mainHadithText, @JsonKey(includeToJson: false)  int? mainHadithNumber, @JsonKey(includeToJson: false)  String? mainBookName, @JsonKey(includeToJson: false)  String? simHadithText, @JsonKey(includeToJson: false)  int? simHadithNumber, @JsonKey(includeToJson: false)  String? simBookName)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
@@ -172,18 +174,18 @@ return $default(_that.id,_that.mainHadithId,_that.simHadithId,_that.createdAt,_t
 
 }
 }
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id, @JsonKey(name: 'main_hadith')  String? mainHadithId, @JsonKey(name: 'sim_hadith')  String? simHadithId, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt, @JsonKey(includeToJson: false)  String? mainHadithText, @JsonKey(includeToJson: false)  int? mainHadithNumber, @JsonKey(includeToJson: false)  String? mainBookName, @JsonKey(includeToJson: false)  String? simHadithText, @JsonKey(includeToJson: false)  int? simHadithNumber, @JsonKey(includeToJson: false)  String? simBookName)  $default,) {final _that = this;
 switch (_that) {
@@ -193,17 +195,17 @@ return $default(_that.id,_that.mainHadithId,_that.simHadithId,_that.createdAt,_t
 
 }
 }
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+
+
+
+
+
+
+
+
+
+
+
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id, @JsonKey(name: 'main_hadith')  String? mainHadithId, @JsonKey(name: 'sim_hadith')  String? simHadithId, @JsonKey(name: 'created_at')  String createdAt, @JsonKey(name: 'updated_at')  String updatedAt, @JsonKey(includeToJson: false)  String? mainHadithText, @JsonKey(includeToJson: false)  int? mainHadithNumber, @JsonKey(includeToJson: false)  String? mainBookName, @JsonKey(includeToJson: false)  String? simHadithText, @JsonKey(includeToJson: false)  int? simHadithNumber, @JsonKey(includeToJson: false)  String? simBookName)?  $default,) {final _that = this;
 switch (_that) {
@@ -216,7 +218,7 @@ return $default(_that.id,_that.mainHadithId,_that.simHadithId,_that.createdAt,_t
 
 }
 
-/// @nodoc
+
 @JsonSerializable()
 
 class _SimilarAhadith implements SimilarAhadith {
@@ -228,7 +230,7 @@ class _SimilarAhadith implements SimilarAhadith {
 @override@JsonKey(name: 'sim_hadith') final  String? simHadithId;
 @override@JsonKey(name: 'created_at') final  String createdAt;
 @override@JsonKey(name: 'updated_at') final  String updatedAt;
-// حقول العلاقات (للقراءة فقط)
+
 @override@JsonKey(includeToJson: false) final  String? mainHadithText;
 @override@JsonKey(includeToJson: false) final  int? mainHadithNumber;
 @override@JsonKey(includeToJson: false) final  String? mainBookName;
@@ -236,8 +238,8 @@ class _SimilarAhadith implements SimilarAhadith {
 @override@JsonKey(includeToJson: false) final  int? simHadithNumber;
 @override@JsonKey(includeToJson: false) final  String? simBookName;
 
-/// Create a copy of SimilarAhadith
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 _$SimilarAhadithCopyWith<_SimilarAhadith> get copyWith => __$SimilarAhadithCopyWithImpl<_SimilarAhadith>(this, _$identity);
@@ -264,7 +266,7 @@ String toString() {
 
 }
 
-/// @nodoc
+
 abstract mixin class _$SimilarAhadithCopyWith<$Res> implements $SimilarAhadithCopyWith<$Res> {
   factory _$SimilarAhadithCopyWith(_SimilarAhadith value, $Res Function(_SimilarAhadith) _then) = __$SimilarAhadithCopyWithImpl;
 @override @useResult
@@ -276,7 +278,7 @@ $Res call({
 
 
 }
-/// @nodoc
+
 class __$SimilarAhadithCopyWithImpl<$Res>
     implements _$SimilarAhadithCopyWith<$Res> {
   __$SimilarAhadithCopyWithImpl(this._self, this._then);
@@ -284,21 +286,21 @@ class __$SimilarAhadithCopyWithImpl<$Res>
   final _SimilarAhadith _self;
   final $Res Function(_SimilarAhadith) _then;
 
-/// Create a copy of SimilarAhadith
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? mainHadithId = freezed,Object? simHadithId = freezed,Object? createdAt = null,Object? updatedAt = null,Object? mainHadithText = freezed,Object? mainHadithNumber = freezed,Object? mainBookName = freezed,Object? simHadithText = freezed,Object? simHadithNumber = freezed,Object? simBookName = freezed,}) {
   return _then(_SimilarAhadith(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String?,mainHadithId: freezed == mainHadithId ? _self.mainHadithId : mainHadithId // ignore: cast_nullable_to_non_nullable
-as String?,simHadithId: freezed == simHadithId ? _self.simHadithId : simHadithId // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as String,mainHadithText: freezed == mainHadithText ? _self.mainHadithText : mainHadithText // ignore: cast_nullable_to_non_nullable
-as String?,mainHadithNumber: freezed == mainHadithNumber ? _self.mainHadithNumber : mainHadithNumber // ignore: cast_nullable_to_non_nullable
-as int?,mainBookName: freezed == mainBookName ? _self.mainBookName : mainBookName // ignore: cast_nullable_to_non_nullable
-as String?,simHadithText: freezed == simHadithText ? _self.simHadithText : simHadithText // ignore: cast_nullable_to_non_nullable
-as String?,simHadithNumber: freezed == simHadithNumber ? _self.simHadithNumber : simHadithNumber // ignore: cast_nullable_to_non_nullable
-as int?,simBookName: freezed == simBookName ? _self.simBookName : simBookName // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id 
+as String?,mainHadithId: freezed == mainHadithId ? _self.mainHadithId : mainHadithId 
+as String?,simHadithId: freezed == simHadithId ? _self.simHadithId : simHadithId 
+as String?,createdAt: null == createdAt ? _self.createdAt : createdAt 
+as String,updatedAt: null == updatedAt ? _self.updatedAt : updatedAt 
+as String,mainHadithText: freezed == mainHadithText ? _self.mainHadithText : mainHadithText 
+as String?,mainHadithNumber: freezed == mainHadithNumber ? _self.mainHadithNumber : mainHadithNumber 
+as int?,mainBookName: freezed == mainBookName ? _self.mainBookName : mainBookName 
+as String?,simHadithText: freezed == simHadithText ? _self.simHadithText : simHadithText 
+as String?,simHadithNumber: freezed == simHadithNumber ? _self.simHadithNumber : simHadithNumber 
+as int?,simBookName: freezed == simBookName ? _self.simBookName : simBookName 
 as String?,
   ));
 }
@@ -306,5 +308,5 @@ as String?,
 
 }
 
-// dart format on
+
 

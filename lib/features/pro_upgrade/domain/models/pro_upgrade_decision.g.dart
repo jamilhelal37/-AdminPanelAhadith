@@ -1,10 +1,12 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+
 
 part of 'pro_upgrade_decision.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+
+
+
 
 _ProUpgradeDecision _$ProUpgradeDecisionFromJson(Map<String, dynamic> json) =>
     _ProUpgradeDecision(
